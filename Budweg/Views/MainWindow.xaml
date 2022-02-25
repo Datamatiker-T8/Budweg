@@ -5,8 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Budweg"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
+        Title="MainWindow" Height="450" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
+    <Grid Background="#FFF7F3F3">
+        <Grid x:Name="sidePanel" Background="#049b4b" HorizontalAlignment="Left" Width="157">
+            <StackPanel>
+                <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" FontFamily="Century Gothic" FontSize="14" Foreground="White" BorderBrush="Transparent" Background="{x:Null}" FontWeight="Bold" Height="188">
+                    <ListViewItem Height="35" Margin="-3,0,0,30">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Views/overview_40px.png" Height="35" VerticalAlignment="Center"/>
+                            <TextBlock Margin="10 0 0 0" Text="Oversigt" VerticalAlignment="Center" FontSize="16"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="35" Margin="-2,0,0,30">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Views/user_manual_40px.png" Height="35" VerticalAlignment="Center" Margin="0,0,2,0"/>
+                            <TextBlock Margin="10 0 0 0" Text="Information" VerticalAlignment="Center" FontSize="16" />
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="35" Margin="-2,0,0,10">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Views/contacts_40px.png" Height="35" VerticalAlignment="Center" Margin="-2,0,0,0"/>
+                            <TextBlock Margin="10 0 0 0" Text="Kundesupport" VerticalAlignment="Center" FontSize="15"/>
+                        </StackPanel>
+                    </ListViewItem>
+                </ListView>
+                <Grid Height="154" Background="Transparent" Margin="0,110,0,0">
+                    <Button HorizontalAlignment="Left" Height="38" VerticalAlignment="Bottom" Background="Transparent" BorderBrush="Transparent" Click="Button_Click" Width="42" Margin="5,0,0,0">
+                        <Image Source="/Views/menu_40px.png" VerticalAlignment="Center" HorizontalAlignment="Center" Width="40"/>
+                    </Button>
+                </Grid>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>
