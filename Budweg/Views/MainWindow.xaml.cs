@@ -67,5 +67,16 @@ namespace Budweg
                 DragMove();
             }
         }
+
+        private void KundeSupport_Selected(object sender, RoutedEventArgs e)
+        {
+            MainFrameWindows.Navigate(new System.Uri("KundeSupport.xaml",
+             UriKind.RelativeOrAbsolute));
+        }
+
+        private void ListViewItem_Selected(object sender, RoutedEventArgs e)
+        {
+            
+        }
     }
 }
