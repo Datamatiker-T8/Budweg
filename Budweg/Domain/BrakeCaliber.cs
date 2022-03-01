@@ -34,6 +34,7 @@ namespace Budweg.Domain
 
             // Saves QRCode in .exe folder and should show in the program (for now its done in the console)
             Bitmap qrCodeImage = QR_Code.GetGraphic(20);
+
             string filepathTest = "C:\\Users\\Mads\\1. studieår\\Projekter\\Budweg"; // TEST
             string filepath = filepathTest + ".jpg";
             qrCodeImage.Save(filepath);
