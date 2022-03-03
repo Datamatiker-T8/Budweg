@@ -69,38 +69,23 @@ namespace Budweg
             }
         }
 
-        private void KundeSupport_Selected(object sender, RoutedEventArgs e)
-        {
-            this.MainFrameWindows.Navigate(new KundeSupport());
-        }
-
-        private void ListViewItem_Selected(object sender, RoutedEventArgs e)
-        {
-            this.MainFrameWindows.Navigate(new Oversigt());
-        }
-
-        private void ListViewItem_Selected_1(object sender, RoutedEventArgs e)
-        {
-            this.MainFrameWindows.Navigate(new Information());
-        }
-
         private void Overviewbt_Click(object sender, RoutedEventArgs e)
         {
             Oversigt os = new Oversigt();
-            MainFrameWindows.Navigate(os);
+            MainFrameWindow.Navigate(os);
         }
 
         private void Infobt_Click(object sender, RoutedEventArgs e)
         {
             Information im = new Information();
-            MainFrameWindows.Navigate(im);
+            MainFrameWindow.Navigate(im);
         }
 
 
         private void kundesupportbt_Click(object sender, RoutedEventArgs e)
         {
             KundeSupport kt = new KundeSupport();
-            MainFrameWindows.Navigate(kt);
+            MainFrameWindow.Navigate(kt);
         }
     }
 }

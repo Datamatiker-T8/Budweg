@@ -8,5 +8,45 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="KundeSupport">
 
-    <Grid/>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="79*"/>
+            <ColumnDefinition Width="321*"/>
+        </Grid.ColumnDefinitions>
+        <Rectangle HorizontalAlignment="Left" Height="39" Margin="6,241,0,0" VerticalAlignment="Top" Width="626" Opacity="0.225" Fill="#FF949292" Grid.Column="1"/>
+        <Rectangle HorizontalAlignment="Left" Height="40" Margin="6,302,0,0" VerticalAlignment="Top" Width="626" Opacity="0.225" Fill="#FF949292" Grid.Column="1"/>
+        <Rectangle HorizontalAlignment="Left" Height="40" Margin="6,365,0,0" VerticalAlignment="Top" Width="626" Opacity="0.225" Fill="#FF949292" Grid.Column="1"/>
+        <Label Content="Ressourcer" HorizontalAlignment="Left" Margin="5,193,0,0" VerticalAlignment="Top" Background="{x:Null}" FontSize="14" FontFamily="Arial" Width="84" Grid.Column="1"/>
+        <Rectangle HorizontalAlignment="Left" Height="131" Margin="128,59,0,0" VerticalAlignment="Top" Width="372" Opacity="0.225" Fill="#FF949292" Grid.Column="1"/>
+        <Rectangle HorizontalAlignment="Left" Height="131" Margin="507,59,0,0" VerticalAlignment="Top" Width="125" Opacity="0.225" Fill="#FF949292" Grid.Column="1" RenderTransformOrigin="0.5,0.5">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="0"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="0"/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Rectangle HorizontalAlignment="Left" Height="4" Margin="86,204,0,0" VerticalAlignment="Top" Width="546" Opacity="0.5" Fill="#FF47A200" Grid.Column="1"/>
+        <Button Content="Certifikat" HorizontalAlignment="Left" Margin="6,251,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF47A200" FontFamily="Arial" FontSize="14" BorderBrush="{x:Null}" Height="19" FontStyle="Italic" Width="62" Grid.Column="1"/>
+        <Button Content="Monteringsguide" HorizontalAlignment="Left" Margin="5,312,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF47A200" FontFamily="Arial" FontSize="14" BorderBrush="{x:Null}" Height="20" FontStyle="Italic" Width="107" Grid.Column="1"/>
+        <Label Content="Video" HorizontalAlignment="Left" Margin="109,309,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="5" Background="{x:Null}" Foreground="White" Opacity="0.47" Width="24" Grid.Column="1"/>
+        <Button Content="Garantibevis" HorizontalAlignment="Left" Margin="6,376,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF47A200" FontFamily="Arial" FontSize="14" BorderBrush="{x:Null}" Height="18" FontStyle="Italic" Width="84" Grid.Column="1"/>
+        <Image HorizontalAlignment="Left" Height="106" Margin="518,72,0,0" VerticalAlignment="Top" Width="118" Source="/Views/Opera Snapshot_2022-03-03_105230_drive.google.com.png" Grid.Column="1"/>
+        <Image Grid.Column="1" HorizontalAlignment="Left" Height="132" Margin="10,59,0,0" VerticalAlignment="Top" Width="108"/>
+        <Label Grid.Column="1" Content="Artikel status:" HorizontalAlignment="Left" Margin="130,98,0,0" VerticalAlignment="Top" Background="{x:Null}" FontWeight="Bold"/>
+        <Label Grid.Column="1" Content="Bremsesystem:" HorizontalAlignment="Left" Margin="130,124,0,0" VerticalAlignment="Top" Background="{x:Null}" FontWeight="Bold"/>
+        <Label Grid.Column="1" Content="EAN-Kode:" HorizontalAlignment="Left" Margin="130,152,0,0" VerticalAlignment="Top" Background="{x:Null}" FontWeight="Bold"/>
+        <Label Grid.Column="1" Content="Bremseskrivetykkelse:" HorizontalAlignment="Left" Margin="294,94,0,0" VerticalAlignment="Top" Background="{x:Null}" FontWeight="Bold"/>
+        <Label Grid.Column="1" Content="Stempeldiameter:" HorizontalAlignment="Left" Margin="294,124,0,0" VerticalAlignment="Top" Background="{x:Null}" FontWeight="Bold"/>
+        <Label Grid.Column="1" Content="Position:" HorizontalAlignment="Left" Margin="294,152,0,0" VerticalAlignment="Top" Background="{x:Null}" FontWeight="Bold"/>
+        <TextBlock x:Name="ArtikelStatus1" Grid.Column="1" HorizontalAlignment="Left" Margin="217,103,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <TextBlock x:Name="BremseSystem1" Grid.Column="1" HorizontalAlignment="Left" Margin="224,130,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <TextBlock x:Name="EAN_Kode1" Grid.Column="1" HorizontalAlignment="Left" Margin="202,157,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <TextBlock x:Name="BremsekalibreTitel" Grid.Column="1" HorizontalAlignment="Left" Margin="136,66,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" FontSize="18" FontFamily="Arial"/>
+        <TextBlock x:Name="BremseST1" Grid.Column="1" HorizontalAlignment="Left" Margin="428,99,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <TextBlock x:Name="StempelDiameter1" Grid.Column="1" HorizontalAlignment="Left" Margin="404,130,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <TextBlock x:Name="PositionBeskrivelse1" Grid.Column="1" HorizontalAlignment="Left" Margin="353,157,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+    </Grid>
 </Page>
