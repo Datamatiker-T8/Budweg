@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Budweg.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -55,12 +56,12 @@ namespace Budweg
                 }
             }
         }
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Menu_Click(object sender, RoutedEventArgs e)
         {
             timer.Start();
         }
 
-        private void panelHeader_MouseDown(object sender, MouseButtonEventArgs e)
+        private void PanelHeader_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
             {
@@ -70,13 +71,36 @@ namespace Budweg
 
         private void KundeSupport_Selected(object sender, RoutedEventArgs e)
         {
-            MainFrameWindows.Navigate(new System.Uri("KundeSupport.xaml",
-             UriKind.RelativeOrAbsolute));
+            this.MainFrameWindows.Navigate(new KundeSupport());
         }
 
         private void ListViewItem_Selected(object sender, RoutedEventArgs e)
         {
-            
+            this.MainFrameWindows.Navigate(new Oversigt());
+        }
+
+        private void ListViewItem_Selected_1(object sender, RoutedEventArgs e)
+        {
+            this.MainFrameWindows.Navigate(new Information());
+        }
+
+        private void Overviewbt_Click(object sender, RoutedEventArgs e)
+        {
+            Oversigt os = new Oversigt();
+            MainFrameWindows.Navigate(os);
+        }
+
+        private void Infobt_Click(object sender, RoutedEventArgs e)
+        {
+            Information im = new Information();
+            MainFrameWindows.Navigate(im);
+        }
+
+
+        private void kundesupportbt_Click(object sender, RoutedEventArgs e)
+        {
+            KundeSupport kt = new KundeSupport();
+            MainFrameWindows.Navigate(kt);
         }
     }
 }

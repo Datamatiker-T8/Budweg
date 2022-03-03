@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Views\contacts_40px.png" />
     <None Remove="Views\menu_40px.png" />
     <None Remove="Views\overview_40px.png" />
     <None Remove="Views\user_manual_40px.png" />
@@ -22,6 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Views\contacts_40px.png" />
     <Resource Include="Views\menu_40px.png" />
     <Resource Include="Views\overview_40px.png" />
     <Resource Include="Views\user_manual_40px.png" />
