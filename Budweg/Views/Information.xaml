@@ -8,5 +8,14 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Information">
 
-    <Grid/>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="49*"/>
+            <RowDefinition Height="401*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="79*"/>
+            <ColumnDefinition Width="321*"/>
+        </Grid.ColumnDefinitions>
+    </Grid>
 </Page>
