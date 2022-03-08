@@ -10,7 +10,6 @@ namespace Budweg.Domain
     {
         public string Title { get; set; }
         public int Views { get; }
-
         public string VersionNumber { get; set; }
         public List<BrakeCaliber> BrakeCalibers { get; set; }
 

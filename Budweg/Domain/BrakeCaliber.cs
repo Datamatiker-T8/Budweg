@@ -10,33 +10,29 @@ namespace Budweg.Domain
 {
      public class BrakeCaliber
     {
-        public string ModelNumber { get; set; }
-        public QRCode QR_Code { get; set; } // Todo 
+        public int BrakeCaliberId { get; set; }
+        public string BudwegNo { get; set; }
+        public Bitmap QR_Code { get; set; }
 
         public List<Ressource> ressources;
         public string LinkQRCode { get; set; }
 
         public BrakeCaliber(string modelNumber, string linkQRCode)
         {
-            ModelNumber = modelNumber;
+            BudwegNo = modelNumber;
             LinkQRCode = linkQRCode;
-            GenerateQRCode();
+            QR_Code = GenerateQRCode(linkQRCode);
         }
 
-        public Bitmap GenerateQRCode()
+        public Bitmap GenerateQRCode(string linkQRCode)
         {
             //Readies QRCoder
             QRCodeGenerator qrGenerator = new();
 
             // Creates QRCode for the Link associated with the object
-            QRCodeData qrCodeData = qrGenerator.CreateQrCode(LinkQRCode, QRCodeGenerator.ECCLevel.Q);
+            QRCodeData qrCodeData = qrGenerator.CreateQrCode(linkQRCode, QRCodeGenerator.ECCLevel.Q);
             QRCode QR_Code = new(qrCodeData);
-
-            // Saves QRCode in .exe folder and should show in the program (for now its done in the console)
             Bitmap qrCodeImage = QR_Code.GetGraphic(20);
-            string filepathTest = "C:\\Users\\Mads\\1. studieår\\Projekter\\Budweg"; // TEST
-            string filepath = filepathTest + ".jpg";
-            qrCodeImage.Save(filepath);
 
             return qrCodeImage;
         }
