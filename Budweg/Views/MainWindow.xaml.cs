@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Budweg.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,54 +19,30 @@ namespace Budweg
 {
     public partial class MainWindow : Window
     {
-        DispatcherTimer timer;
-
-        double panelWidth;
-        bool hidden;
+        
         public MainWindow()
         {
             InitializeComponent();
-            timer = new DispatcherTimer();
-            timer.Interval = new TimeSpan(0, 0, 0, 0, 8);
-            timer.Tick += Timer_Tick;
-
-            panelWidth = sidePanel.Width;
-        }
-
-        private void Timer_Tick(object sender, EventArgs e)
-        {
-            double Timepanelspeed = 1.5;
             
-            if (hidden)
-            {
-                sidePanel.Width += Timepanelspeed;
-                if (sidePanel.Width >= panelWidth)
-                {
-                    timer.Stop();
-                    hidden = false;
-                }
-            }
-            else
-            {
-                sidePanel.Width -= Timepanelspeed;
-                if (sidePanel.Width <= 50)
-                {
-                    timer.Stop();
-                    hidden = true;
-                }
-            }
-        }
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            timer.Start();
         }
 
-        private void panelHeader_MouseDown(object sender, MouseButtonEventArgs e)
+        private void Overviewbt_Click(object sender, RoutedEventArgs e)
         {
-            if (e.LeftButton == MouseButtonState.Pressed)
-            {
-                DragMove();
-            }
+            Oversigt os = new Oversigt();
+            MainFrameWindow.Navigate(os);
+        }
+
+        private void Infobt_Click(object sender, RoutedEventArgs e)
+        {
+            Information im = new Information();
+            MainFrameWindow.Navigate(im);
+        }
+
+
+        private void kundesupportbt_Click(object sender, RoutedEventArgs e)
+        {
+            KundeSupport kt = new KundeSupport();
+            MainFrameWindow.Navigate(kt);
         }
     }
 }
