@@ -37,21 +37,30 @@
         <Button Content="Monteringsguide" HorizontalAlignment="Left" Margin="5,247,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF47A200" FontFamily="Arial" FontSize="14" BorderBrush="{x:Null}" Height="20" FontStyle="Italic" Width="107" Grid.Column="1" Grid.Row="1"/>
         <Label Content="Video" HorizontalAlignment="Left" Margin="108,246,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="7" Background="{x:Null}" Foreground="White" Opacity="0.47" Width="28" Grid.Column="1" Grid.Row="1" Height="18"/>
         <Button Content="Garantibevis" HorizontalAlignment="Left" Margin="6,303,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF47A200" FontFamily="Arial" FontSize="14" BorderBrush="{x:Null}" Height="18" FontStyle="Italic" Width="84" Grid.Column="1" Grid.Row="1"/>
-        <Image HorizontalAlignment="Left" Height="106" Margin="518,7,0,0" VerticalAlignment="Top" Width="118" Source="/Views/Opera Snapshot_2022-03-03_105230_drive.google.com.png" Grid.Column="1" Grid.Row="1"/>
-        <Image Grid.Column="1" HorizontalAlignment="Left" Height="132" Margin="10,3,0,0" VerticalAlignment="Top" Width="108" Grid.Row="1"/>
+        <Image HorizontalAlignment="Left" Height="115" Margin="515,12,0,0" VerticalAlignment="Top" Width="118" Source="/Views/Opera Snapshot_2022-03-03_105230_drive.google.com.png" Grid.Column="1" Grid.Row="1"/>
+        <Image Grid.Column="1" HorizontalAlignment="Left" Height="132" Margin="7,3,0,0" VerticalAlignment="Top" Width="116" Grid.Row="1"/>
         <Label Grid.Column="1" Content="Artikel status:" HorizontalAlignment="Left" Margin="130,33,0,0" VerticalAlignment="Top" Background="{x:Null}" FontWeight="Bold" Grid.Row="1" Height="26" Width="88"/>
         <Label Grid.Column="1" Content="Bremsesystem:" HorizontalAlignment="Left" Margin="130,59,0,0" VerticalAlignment="Top" Background="{x:Null}" FontWeight="Bold" Grid.Row="1" Height="26" Width="94"/>
         <Label Grid.Column="1" Content="EAN-Kode:" HorizontalAlignment="Left" Margin="130,87,0,0" VerticalAlignment="Top" Background="{x:Null}" FontWeight="Bold" Grid.Row="1" Height="26" Width="72"/>
         <Label Grid.Column="1" Content="Bremseskrivetykkelse:" HorizontalAlignment="Left" Margin="294,29,0,0" VerticalAlignment="Top" Background="{x:Null}" FontWeight="Bold" Grid.Row="1" Height="26" Width="134"/>
         <Label Grid.Column="1" Content="Stempeldiameter:" HorizontalAlignment="Left" Margin="294,59,0,0" VerticalAlignment="Top" Background="{x:Null}" FontWeight="Bold" Grid.Row="1" Height="26" Width="110"/>
         <Label Grid.Column="1" Content="Position:" HorizontalAlignment="Left" Margin="294,87,0,0" VerticalAlignment="Top" Background="{x:Null}" FontWeight="Bold" Grid.Row="1" Height="26" Width="59"/>
-        <TextBlock x:Name="ArtikelStatus" Grid.Column="1" HorizontalAlignment="Left" Margin="217,38,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Grid.Row="1" Height="16" Width="49"/>
-        <TextBlock x:Name="BremseSystem" Grid.Column="1" HorizontalAlignment="Left" Margin="224,65,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Grid.Row="1" Height="16" Width="49"/>
-        <TextBlock x:Name="EAN_Kode" Grid.Column="1" HorizontalAlignment="Left" Margin="202,92,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Grid.Row="1" Height="16" Width="49"/>
+        <TextBlock x:Name="ArtikelStatus" Grid.Column="1" HorizontalAlignment="Left" Margin="217,38,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Grid.Row="1" Height="16" Width="52"/>
+        <TextBlock x:Name="BremseSystem" Grid.Column="1" HorizontalAlignment="Left" Margin="224,65,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Grid.Row="1" Height="16" Width="54" RenderTransformOrigin="0.5,0.5">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.214"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+        <TextBlock x:Name="EAN_Kode" Grid.Column="1" HorizontalAlignment="Left" Margin="202,92,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Grid.Row="1" Height="16" Width="56"/>
         <TextBlock x:Name="BremsekalibreTitel" Grid.Column="1" HorizontalAlignment="Left" Margin="136,1,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" FontSize="18" FontFamily="Arial" Grid.Row="1" Height="21" Width="354"/>
-        <TextBlock x:Name="BremseST" Grid.Column="1" HorizontalAlignment="Left" Margin="428,34,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Grid.Row="1" Height="16" Width="49"/>
-        <TextBlock x:Name="StempelDiameter" Grid.Column="1" HorizontalAlignment="Left" Margin="404,65,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Grid.Row="1" Height="16" Width="49"/>
-        <TextBlock x:Name="PositionBeskrivelse" Grid.Column="1" HorizontalAlignment="Left" Margin="353,92,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Grid.Row="1" Height="16" Width="49"/>
+        <TextBlock x:Name="BremseST" Grid.Column="1" HorizontalAlignment="Left" Margin="428,34,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Grid.Row="1" Height="16" Width="52"/>
+        <TextBlock x:Name="StempelDiameter" Grid.Column="1" HorizontalAlignment="Left" Margin="404,65,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Grid.Row="1" Height="16" Width="52"/>
+        <TextBlock x:Name="PositionBeskrivelse" Grid.Column="1" HorizontalAlignment="Left" Margin="353,92,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Grid.Row="1" Height="16" Width="57"/>
         <Grid Height="40" Background="Transparent" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="587,293,0,0" Grid.Column="1" Grid.Row="1" Width="45">
             <Button Background="Transparent" BorderBrush="Transparent" FontFamily="Arial Black" Foreground="White" FontSize="14" HorizontalAlignment="Center" Width="39" Margin="0,0,0,1">
                 <Image Height="35" Width="36" Source="/Views/downloading_updates_64px.png"/>

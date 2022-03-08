@@ -17,5 +17,13 @@
             <ColumnDefinition Width="79*"/>
             <ColumnDefinition Width="321*"/>
         </Grid.ColumnDefinitions>
+        <Rectangle HorizontalAlignment="Left" Height="269" Margin="41,75,0,0" VerticalAlignment="Top" Width="569" Opacity="0.225" Fill="#FF949292" Grid.Column="1" Grid.Row="1"/>
+        <Rectangle HorizontalAlignment="Left" Height="53" Margin="41,11,0,0" VerticalAlignment="Top" Width="168" Opacity="0.225" Fill="#FF949292" Grid.Column="1" Grid.Row="1"/>
+        <Rectangle HorizontalAlignment="Left" Height="53" Margin="236,10,0,0" VerticalAlignment="Top" Width="181" Opacity="0.225" Fill="#FF949292" Grid.Column="1" Grid.Row="1"/>
+        <Rectangle HorizontalAlignment="Left" Height="53" Margin="443,9,0,0" VerticalAlignment="Top" Width="167" Opacity="0.225" Fill="#FF949292" Grid.Column="1" Grid.Row="1"/>
+        <Button Grid.Column="1" Content="Opret" HorizontalAlignment="Left" Margin="54,355,0,0" Grid.Row="1" VerticalAlignment="Top" Height="33" Width="118"/>
+        <Button Grid.Column="1" Content="Slet" HorizontalAlignment="Left" Margin="265,354,0,0" Grid.Row="1" VerticalAlignment="Top" Height="33" Width="118"/>
+        <Button Grid.Column="1" Content="Rediger" HorizontalAlignment="Left" Margin="474,353,0,0" Grid.Row="1" VerticalAlignment="Top" Height="33" Width="118"/>
+        <ListBox Grid.Column="1" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="42,74,33,57"/>
     </Grid>
 </Page>
