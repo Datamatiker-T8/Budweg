@@ -31,8 +31,7 @@ namespace Budweg.Persistence
                         string budwegNo = sqldatareader["BudwegNo"].ToString();
                         string linkQRCode = sqldatareader["LinkQRCode"].ToString();
 
-                        BrakeCaliber bc = new(budwegNo, linkQRCode);
-                        brakeCalibers.Add(bc);
+                        brakeCalibers.Add(new BrakeCaliber(budwegNo, linkQRCode));
                     }
                 }
             }
