@@ -1,6 +1,7 @@
 ﻿using Budweg.Domain;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -42,11 +43,40 @@ namespace Budweg.Persistence
         }
         public int? Add(Feedback feedback)
         {
-            return null;
+            int result = -1;
+            using (SqlConnection con = new(P1DB08ConnectionPath))
+            {
+                con.Open();
+                result = feedback.Id;
+                int feedbackRating = feedback.Rating;
+                string comment = feedback.Description;
+
+                string query =$"    INSERT INTO FEEDBACK (FeedbackID, Rating, Description)" +
+                              $"    VALUES              (@{result},@{feedbackRating},@{comment})";
+
+                SqlCommand com = new(query);
+                com.Parameters.Add($"@{result}", SqlDbType.Int);
+                com.Parameters.Add($"@{feedbackRating}", SqlDbType.Int);
+                com.Parameters.Add($"@{comment}", SqlDbType.NVarChar);
+            }
+
+            return result; // :)
         }
         public List<Feedback> GetAll()
         {
             return feedbacks;
+        }
+        public Feedback GetById(int id)
+        {
+            Feedback result = null;
+            foreach (Feedback feedback in feedbacks)
+            {
+                if (feedback.Id.Equals(id))
+                {
+                    result = feedback;
+                }
+            }
+            return result;
         }
         public void Remove(Feedback feedback)
         {
