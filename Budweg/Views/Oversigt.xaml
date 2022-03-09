@@ -17,13 +17,41 @@
             <ColumnDefinition Width="79*"/>
             <ColumnDefinition Width="321*"/>
         </Grid.ColumnDefinitions>
-        <Rectangle HorizontalAlignment="Left" Height="269" Margin="41,75,0,0" VerticalAlignment="Top" Width="569" Opacity="0.225" Fill="#FF949292" Grid.Column="1" Grid.Row="1"/>
-        <Rectangle HorizontalAlignment="Left" Height="53" Margin="41,11,0,0" VerticalAlignment="Top" Width="168" Opacity="0.225" Fill="#FF949292" Grid.Column="1" Grid.Row="1"/>
-        <Rectangle HorizontalAlignment="Left" Height="53" Margin="236,10,0,0" VerticalAlignment="Top" Width="181" Opacity="0.225" Fill="#FF949292" Grid.Column="1" Grid.Row="1"/>
-        <Rectangle HorizontalAlignment="Left" Height="53" Margin="443,9,0,0" VerticalAlignment="Top" Width="167" Opacity="0.225" Fill="#FF949292" Grid.Column="1" Grid.Row="1"/>
-        <Button Grid.Column="1" Content="Opret" HorizontalAlignment="Left" Margin="54,355,0,0" Grid.Row="1" VerticalAlignment="Top" Height="33" Width="118"/>
-        <Button Grid.Column="1" Content="Slet" HorizontalAlignment="Left" Margin="265,354,0,0" Grid.Row="1" VerticalAlignment="Top" Height="33" Width="118"/>
-        <Button Grid.Column="1" Content="Rediger" HorizontalAlignment="Left" Margin="474,353,0,0" Grid.Row="1" VerticalAlignment="Top" Height="33" Width="118"/>
-        <ListBox Grid.Column="1" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="42,74,33,57"/>
+
+        <Border Background="#FFA7A5A5" Grid.Column="1" Margin="467,39,13,231" Grid.Row="1" CornerRadius="10">
+            <Rectangle HorizontalAlignment="Left" Height="131" VerticalAlignment="Top" Width="162" Opacity="0.225" Fill="#FF949292" Margin="470,189,0,0" Grid.Column="1" Grid.Row="1"/>
+        </Border>
+        <Border Background="#FFA7A5A5" Grid.Column="1" Margin="467,193,14,84" Grid.Row="1" CornerRadius="10">
+            <Rectangle HorizontalAlignment="Left" Height="131" VerticalAlignment="Top" Width="162" Opacity="0.225" Fill="#FF949292" Margin="470,189,0,0" Grid.Column="1" Grid.Row="1"/>
+        </Border>
+        <Border Background="#FFD6CDCD" Grid.Column="1" Margin="472,277,21,101" Grid.Row="1" CornerRadius="5" >
+            <Rectangle HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="25" Opacity="0.62" Fill="#FF949292" Margin="690,249,0,0" Grid.Column="1" Grid.Row="1"/>
+        </Border>
+        <Button Style="{StaticResource RoundCorner}" Grid.Column="1" Content="Opret" HorizontalAlignment="Left" Margin="18,355,0,0" Grid.Row="1" VerticalAlignment="Top" Height="33" Width="118" Background="#FFDDDDDD"/>
+        <Border Background="#FFD6CDCD" Grid.Column="1" Margin="472,210,21,168" Grid.Row="1" CornerRadius="5" >
+            <Rectangle HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="25" Opacity="0.62" Fill="#FF949292" Margin="690,249,0,0" Grid.Column="1" Grid.Row="1"/>
+        </Border>
+        <Button Style="{StaticResource RoundCorner}" Grid.Column="1" Content="Slet" HorizontalAlignment="Left" Margin="173,355,0,0" Grid.Row="1" VerticalAlignment="Top" Height="33" Width="118"/>
+        <Button Style="{StaticResource RoundCorner}" Grid.Column="1" Content="Rediger" HorizontalAlignment="Left" Margin="326,354,0,0" Grid.Row="1" VerticalAlignment="Top" Height="33" Width="118"/>
+        <ListBox x:Name="OverViewList" Grid.Column="1" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="17,37,189,71" SelectionChanged="OverViewList_SelectionChanged"/>
+        <Image Grid.Column="1" HorizontalAlignment="Left" Height="118" Margin="472,44,0,0" Grid.Row="1" VerticalAlignment="Top" Width="150"/>
+        <Border Background="#FF656565" Grid.Column="1" Margin="597,212,24,169" Grid.Row="1" CornerRadius="5" >
+            <Rectangle HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="25" Opacity="0.62" Fill="#FF949292" Margin="690,249,0,0" Grid.Column="1" Grid.Row="1"/>
+        </Border>
+        <Grid Height="24" Background="Transparent" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="596,209,0,0" Grid.Column="1" Grid.Row="1" Width="23">
+            <Button Background="Transparent" BorderBrush="Transparent" FontFamily="Arial Black" Foreground="White" FontSize="14" HorizontalAlignment="Center" Width="24" Margin="0,0,0,-1">
+                <Image Height="20" Width="19" Source="/Views/upload_40px.png" OpacityMask="Black"/>
+            </Button>
+        </Grid>
+        <Border Background="#FF656565" Grid.Column="1" Margin="596,279,25,102" Grid.Row="1" CornerRadius="5" >
+            <Rectangle HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="25" Opacity="0.62" Fill="#FF949292" Margin="690,249,0,0" Grid.Column="1" Grid.Row="1"/>
+        </Border>
+        <Grid Height="23" Background="Transparent" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="597,276,0,0" Grid.Column="1" Grid.Row="1" Width="20">
+            <Button Background="Transparent" BorderBrush="Transparent" FontFamily="Arial Black" Foreground="White" FontSize="14" HorizontalAlignment="Center" Width="24" Margin="0,0,0,-1">
+                <Image Height="20" Width="19" Source="/Views/upload_40px.png" OpacityMask="Black"/>
+            </Button>
+        </Grid>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="478,212,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="109"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="479,279,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="109"/>
     </Grid>
 </Page>

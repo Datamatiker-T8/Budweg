@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Views\upload_40px.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="ViewModels\" />
   </ItemGroup>
 
@@ -18,9 +22,9 @@
   <ItemGroup>
     <Resource Include="Views\contacts_40px.png" />
     <Resource Include="Views\downloading_updates_64px.png" />
-    <Resource Include="Views\menu_40px.png" />
     <Resource Include="Views\Opera Snapshot_2022-03-03_105230_drive.google.com.png" />
     <Resource Include="Views\overview_40px.png" />
+    <Resource Include="Views\upload_40px.png" />
     <Resource Include="Views\user_manual_40px.png" />
   </ItemGroup>
 
