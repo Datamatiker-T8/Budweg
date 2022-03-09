@@ -34,10 +34,10 @@
                     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="159" Height="450">
                         <Grid Height="40" Background="Transparent" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,115,0,-84">
                             <Image Source="/Views/overview_40px.png" VerticalAlignment="Top" HorizontalAlignment="Left" Width="30" Margin="0,5,0,0"/>
-                            <Button x:Name="Overviewbt" FontFamily="Bahnschrift" Content="Oversigt" Height="38" Background="Transparent" BorderBrush="Transparent" Margin="27,1,0,1" Foreground="White" FontSize="16" HorizontalAlignment="Left" Width="96" Click="Overviewbt_Click" FontWeight="Normal"/>
+                            <Button x:Name="Overviewbt" FontFamily="Bahnschrift" Content="Overview" Height="38" Background="Transparent" BorderBrush="Transparent" Margin="27,1,0,1" Foreground="White" FontSize="14" HorizontalAlignment="Left" Width="96" Click="Overviewbt_Click" FontWeight="Normal"/>
                         </Grid>
                         <Grid Height="40" Background="Transparent" Margin="0,101,0,-84" HorizontalAlignment="Left" VerticalAlignment="Top">
-                            <Button x:Name="Infobt" Content="Information" Height="38" Background="Transparent" BorderBrush="Transparent" FontFamily="Bahnschrift" Foreground="White" FontSize="16" Margin="32,1,0,1" Click="Infobt_Click" HorizontalAlignment="Left" Width="102"/>
+                            <Button x:Name="Infobt" Content="Statistics" Height="38" Background="Transparent" BorderBrush="Transparent" FontFamily="Bahnschrift" Foreground="White" FontSize="14" Margin="32,1,0,1" Click="Infobt_Click" HorizontalAlignment="Left" Width="102"/>
                             <Image  Source="/Views/user_manual_40px.png" VerticalAlignment="Top" HorizontalAlignment="Left" Width="30" Margin="2,6,0,0"/>
                         </Grid>
                         <Grid Height="40" Background="Transparent" Margin="0,100,0,-84" HorizontalAlignment="Left" Width="155">
