@@ -24,5 +24,10 @@ namespace Budweg
         {
             InitializeComponent();
         }
+
+        private void OverViewList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
