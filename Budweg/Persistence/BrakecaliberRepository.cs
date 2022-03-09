@@ -95,6 +95,7 @@ namespace Budweg.Persistence
         }
         public void Remove(BrakeCaliber brakeCaliber) 
         {
+            //TO DO Når en caliber bliver fjernet, skal Feedback også fjernes :)
             brakeCalibers.Remove(brakeCaliber);
             // Delete existing owner in database
             using (SqlConnection connection = new(P1DB08ConnectionPath))
