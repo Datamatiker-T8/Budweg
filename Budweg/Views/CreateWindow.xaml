@@ -1,0 +1,18 @@
+﻿<Window x:Class="Budweg.Views.CreateWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Budweg.Views"
+        mc:Ignorable="d"
+        Title="CreateWindow" Height="450" Width="800">
+    <Grid>
+        <Button Content="OK" HorizontalAlignment="Left" Margin="171,321,0,0" VerticalAlignment="Top" Click="Button_Click" Width="53"/>
+        <Button Content="Cancel" HorizontalAlignment="Left" Margin="411,319,0,0" VerticalAlignment="Top" Click="Button_Click_1" Width="66"/>
+        <TextBox x:Name="BudwegNO" HorizontalAlignment="Left" Margin="176,84,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="QRLINK" HorizontalAlignment="Left" Margin="176,161,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Label" HorizontalAlignment="Left" Margin="71,90,0,0" VerticalAlignment="Top"/>
+        <Label Content="Label" HorizontalAlignment="Left" Margin="68,161,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>
