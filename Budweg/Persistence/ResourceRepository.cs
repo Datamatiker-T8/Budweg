@@ -11,7 +11,7 @@ namespace Budweg.Persistence
 {
     public class ResourceRepository
     {
-        private List<Ressource> resources = new();
+        private List<Resource> resources = new();
         private string P1DB08ConnectionPath = "Server=10.56.8.36;Database=P1DB08; User Id=P1-08;Password=OPENDB_08;";
         
         public ResourceRepository()
@@ -31,12 +31,12 @@ namespace Budweg.Persistence
                         int Views = int.Parse(reader["Views"].ToString());
                         string Version = reader["Version"].ToString();
 
-                        resources.Add(new Ressource(Title, Version, RessourceID, Views));
+                        resources.Add(new Resource(Title, Version, RessourceID, Views));
                     }
                 }
             }
         }
-        public int? Add(Ressource resource)
+        public int? Add(Resource resource)
         {
             int result = -1;
             using (SqlConnection con = new(P1DB08ConnectionPath))
@@ -59,15 +59,15 @@ namespace Budweg.Persistence
 
             return result; // :)
         }
-        public List<Ressource> GetAll()
+        public List<Resource> GetAll()
         {
             return resources;
         }
 
-        public Ressource GetById(int id)
+        public Resource GetById(int id)
         {
-            Ressource result = null;
-            foreach (Ressource resource in resources)
+            Resource result = null;
+            foreach (Resource resource in resources)
             {
                 if (resource.Id.Equals(id))
                 {
@@ -76,7 +76,7 @@ namespace Budweg.Persistence
             }
             return result;
         }
-        public void Remove(Ressource resource)
+        public void Remove(Resource resource)
         {
             resources.Remove(resource);
 
@@ -85,6 +85,7 @@ namespace Budweg.Persistence
                 connection.Open();
                 string table = "RESSOURCE";
                 string query = $"DELETE FROM {table} WHERE {resource.Id} = @RessourceID";
+                SqlCommand cmd = new SqlCommand(query);
             }
         }
     }

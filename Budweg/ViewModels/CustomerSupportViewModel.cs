@@ -12,8 +12,11 @@ namespace Budweg.ViewModels
     public class CustomerSupportViewModel
     {
         BrakecaliberRepository brakeRepo = new BrakecaliberRepository();
+        ResourceRepository ResourceRepo = new ResourceRepository();
+        FeedbackRepository FeedbackRepo = new FeedbackRepository();
+
         public ObservableCollection<BrakeCaliber> brakeCaliberList { get; set; }
-        public ObservableCollection<Ressource> ressourceList { get; set; }
+        public ObservableCollection<Resource> resourceList { get; set; }
         public ObservableCollection<Feedback> feedbackList { get; set; }
 
         public CustomerSupportViewModel()
@@ -21,6 +24,14 @@ namespace Budweg.ViewModels
             foreach (BrakeCaliber brake in brakeRepo.GetAll())
             {
                 brakeCaliberList.Add(brake);
+            }
+            foreach (Resource resource in ResourceRepo.GetAll())
+            {
+                resourceList.Add(resource);
+            }
+            foreach (Feedback feedback in FeedbackRepo.GetAll())
+            {
+                feedbackList.Add(feedback);
             }
         }
 
@@ -64,12 +75,20 @@ namespace Budweg.ViewModels
 
         }
 
-        public Ressource GetResource(int id)
+        public Resource GetResource(int id)
         {
-            return null;
+            Resource resourceResult = null;
+            foreach (Resource resource in resourceList)
+            {
+                if (id == resource.Id)
+                {
+                    resourceResult = resource;
+                }
+            }
+            return resourceResult;
         }
 
-        public Ressource UpdateResource(int id)
+        public Resource UpdateResource(int id)
         {
             return null;
         }
@@ -92,7 +111,15 @@ namespace Budweg.ViewModels
 
         public Feedback GetFeedback(int id)
         {
-            return null;
+            Feedback feedbackResult = null;
+            foreach (Feedback feedback in feedbackList)
+            {
+                if (id == feedback.Id)
+                {
+                    feedbackResult = feedback;
+                }
+            }
+            return feedbackResult;
         }
 
         public Feedback UpdateFeedback(int id)

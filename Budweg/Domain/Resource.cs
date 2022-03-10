@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Budweg.Domain
 {
-    public class Ressource
+    public class Resource
     {
         public int Id { get; set; }
         public string Title { get; set; }
@@ -14,7 +14,7 @@ namespace Budweg.Domain
         public string VersionNumber { get; set; }
         public List<BrakeCaliber> BrakeCalibers { get; set; }
 
-        public Ressource(string title, string versionNumber, int id, int views)
+        public Resource(string title, string versionNumber, int id, int views)
         {
             Views = views;
             Id = id;
