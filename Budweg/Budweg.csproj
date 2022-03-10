@@ -22,13 +22,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Views\Close_40px.png" />
-    <Resource Include="Views\contacts_40px.png" />
-    <Resource Include="Views\downloading_updates_64px.png" />
-    <Resource Include="Views\Opera Snapshot_2022-03-03_105230_drive.google.com.png" />
-    <Resource Include="Views\overview_40px.png" />
-    <Resource Include="Views\upload_40px.png" />
-    <Resource Include="Views\user_manual_40px.png" />
+    <Resource Include="Views\Image\Close_40px.png" />
+    <Resource Include="Views\Image\contacts_40px.png" />
+    <Resource Include="Views\Image\downloading_updates_64px.png" />
+    <Resource Include="Views\Image\Opera Snapshot_2022-03-03_105230_drive.google.com.png" />
+    <Resource Include="Views\Image\overview_40px.png" />
+    <Resource Include="Views\Image\upload_40px.png" />
+    <Resource Include="Views\Image\user_manual_40px.png" />
   </ItemGroup>
 
 </Project>
