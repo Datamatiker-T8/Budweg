@@ -14,7 +14,7 @@ namespace Budweg.Domain
         public string BudwegNo { get; set; }
         public Bitmap QR_Code { get; set; }
 
-        public List<Ressource> ressources;
+        public List<Resource> ressources;
         public string LinkQRCode { get; set; }
 
         public BrakeCaliber(string modelNumber, string linkQRCode)
