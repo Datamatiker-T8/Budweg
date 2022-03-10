@@ -14,10 +14,8 @@ namespace Budweg.Domain
         public string VersionNumber { get; set; }
         public List<BrakeCaliber> BrakeCalibers { get; set; }
 
-        public Resource(string title, string versionNumber, int id, int views)
+        public Resource(string title, string versionNumber)
         {
-            Views = views;
-            Id = id;
             Title = title;
             VersionNumber = versionNumber;
         }

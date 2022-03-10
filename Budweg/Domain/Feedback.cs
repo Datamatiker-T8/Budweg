@@ -16,6 +16,11 @@ namespace Budweg.Domain
         public List<BrakeCaliber> BrakeCalibers { get; set; }
         public List<Customer> Customers { get; set; }
 
+
+        public Feedback(int rating, string description):this(rating, description, 0) 
+        { 
+        }
+
         public Feedback(int rating, string description, int id)
         {
             Rating = rating;

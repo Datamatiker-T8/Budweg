@@ -12,8 +12,8 @@ namespace Budweg.ViewModels
     public class CustomerSupportViewModel
     {
         BrakecaliberRepository brakeRepo = new BrakecaliberRepository();
-        ResourceRepository ResourceRepo = new ResourceRepository();
-        FeedbackRepository FeedbackRepo = new FeedbackRepository();
+        ResourceRepository resourceRepo = new ResourceRepository();
+        FeedbackRepository feedbackRepo = new FeedbackRepository();
 
         public ObservableCollection<BrakeCaliber> brakeCaliberList { get; set; }
         public ObservableCollection<Resource> resourceList { get; set; }
@@ -25,11 +25,11 @@ namespace Budweg.ViewModels
             {
                 brakeCaliberList.Add(brake);
             }
-            foreach (Resource resource in ResourceRepo.GetAll())
+            foreach (Resource resource in resourceRepo.GetAll())
             {
                 resourceList.Add(resource);
             }
-            foreach (Feedback feedback in FeedbackRepo.GetAll())
+            foreach (Feedback feedback in feedbackRepo.GetAll())
             {
                 feedbackList.Add(feedback);
             }
@@ -51,17 +51,40 @@ namespace Budweg.ViewModels
 
         public BrakeCaliber GetBrakeCaliber(int id)
         {
-            return brakeRepo.GetById(id);
+            BrakeCaliber brakeCaliberResult = null;
+            foreach (BrakeCaliber brake in brakeCaliberList)
+            {
+                if (id == brake.BrakeCaliberId)
+                {
+                    brakeCaliberResult = brake;
+                }
+            }
+            return brakeCaliberResult;
         }
 
-        public BrakeCaliber UpdateBrakeCaliber(int id)
+        public void UpdateBrakeCaliber(int id, string modelNumber, string linkQRCode)
         {
-            return null;
+            foreach (BrakeCaliber brake in brakeCaliberList)
+            {
+                if (id == brake.BrakeCaliberId)
+                {
+                    brake.BudwegNo = modelNumber;
+                    brake.LinkQRCode = linkQRCode;
+                    // Ændres i databasen her.
+                }
+            }
         }
 
         public void DeleteBrakeCaliber(int id)
         {
-
+            foreach (BrakeCaliber brake in brakeCaliberList)
+            {
+                if (id == brake.BrakeCaliberId)
+                {
+                    brakeCaliberList.Remove(brake);
+                    brakeRepo.Remove(brake);
+                }
+            }
         }
 
         // -------------------------------------------
@@ -70,9 +93,12 @@ namespace Budweg.ViewModels
         //
         // -------------------------------------------
 
-        public void AddResource()
+        public void AddResource(string title, string versionNumber)
         {
+            Resource resource = new Resource(title, versionNumber);
+            int addedResource = resourceRepo.Add(resource);
 
+            resourceList.Add(resourceRepo.GetById(addedResource));
         }
 
         public Resource GetResource(int id)
@@ -88,14 +114,29 @@ namespace Budweg.ViewModels
             return resourceResult;
         }
 
-        public Resource UpdateResource(int id)
+        public void UpdateResource(int id, string title, string versionNumber)
         {
-            return null;
+            foreach (Resource resource in resourceList)
+            {
+                if (id == resource.Id)
+                {
+                    resource.Title = title;
+                    resource.VersionNumber = versionNumber;
+                    // Ændres i databasen her.
+                }
+            }
         }
 
         public void DeleteResource(int id)
         {
-
+            foreach (Resource resource in resourceList)
+            {
+                if (id == resource.Id)
+                {
+                    resourceList.Remove(resource);
+                    resourceRepo.Remove(resource);
+                }
+            }
         }
 
         // -------------------------------------------
@@ -104,9 +145,12 @@ namespace Budweg.ViewModels
         //
         // -------------------------------------------
 
-        public void AddFeedback()
+        public void AddFeedback(int rating, string description)
         {
+            Feedback feedback = new Feedback(rating, description);
+            int addedFeedback = feedbackRepo.Add(feedback);
 
+            feedbackList.Add(feedbackRepo.GetById(addedFeedback));
         }
 
         public Feedback GetFeedback(int id)
@@ -122,17 +166,29 @@ namespace Budweg.ViewModels
             return feedbackResult;
         }
 
-        public Feedback UpdateFeedback(int id)
+        public void UpdateFeedback(int id, int rating, string description)
         {
-            return null;
+            foreach(Feedback feedback in feedbackList)
+            {
+                if (id == feedback.Id)
+                {
+                    feedback.Rating = rating;
+                    feedback.Description = description;
+                    // Ændres i databasen her.
+                }
+            }
         }
 
         public void DeleteFeedback(int id)
         {
-
+            foreach (Feedback feedback in feedbackList)
+            {
+                if (id == feedback.Id)
+                {
+                    feedbackList.Remove(feedback);
+                    feedbackRepo.Remove(feedback);
+                }
+            }
         }
-
-
-
     }
 }

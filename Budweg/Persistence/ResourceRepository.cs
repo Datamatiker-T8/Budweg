@@ -36,7 +36,7 @@ namespace Budweg.Persistence
                 }
             }
         }
-        public int? Add(Resource resource)
+        public int Add(Resource resource)
         {
             int result = -1;
             using (SqlConnection con = new(P1DB08ConnectionPath))
