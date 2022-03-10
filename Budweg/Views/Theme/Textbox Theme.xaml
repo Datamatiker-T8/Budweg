@@ -4,12 +4,12 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TextBox}">
-                    <Border CornerRadius="10" Background="White" Width="240" Height="31">
+                    <Border CornerRadius="10" Background="White" Width="303" Height="44">
                         <Grid>
                             <Rectangle StrokeThickness="1"/>
-                            <TextBox Margin="1" Text="{TemplateBinding Text}" BorderThickness="0" Background="White" VerticalAlignment="Center" Padding="5" Foreground="Black" x:Name="SearchBox"/>
+                            <TextBox Margin="1" Text="{TemplateBinding Text}" BorderThickness="0" Background="White" VerticalAlignment="Center" Padding="5" Foreground="Black" x:Name="SearchBox" FontSize="14"/>
 
-                            <TextBlock IsHitTestVisible="False" Text="Search" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" FontSize="11" Foreground="White" Grid.Column="1" Background="Transparent">
+                            <TextBlock IsHitTestVisible="False" Text="Search" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" FontSize="14" Foreground="White" Grid.Column="1" Background="Transparent">
 
                                 <TextBlock.Style>
                                     <Style TargetType="{x:Type TextBlock}">

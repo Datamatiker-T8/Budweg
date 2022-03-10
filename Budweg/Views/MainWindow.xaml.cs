@@ -44,5 +44,15 @@ namespace Budweg
             KundeSupport kt = new KundeSupport();
             MainFrameWindow.Navigate(kt);
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void Close_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }

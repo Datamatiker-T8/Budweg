@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Views\Close_40px.png" />
     <None Remove="Views\upload_40px.png" />
   </ItemGroup>
 
@@ -16,10 +17,12 @@
 
   <ItemGroup>
     <PackageReference Include="QRCoder" Version="1.4.3" />
+    <PackageReference Include="Syncfusion.SfChart.WPF" Version="19.4.0.55" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Views\Close_40px.png" />
     <Resource Include="Views\contacts_40px.png" />
     <Resource Include="Views\downloading_updates_64px.png" />
     <Resource Include="Views\Opera Snapshot_2022-03-03_105230_drive.google.com.png" />
