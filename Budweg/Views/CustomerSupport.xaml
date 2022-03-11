@@ -17,18 +17,25 @@
             <ColumnDefinition Width="79*"/>
             <ColumnDefinition Width="321*"/>
         </Grid.ColumnDefinitions>
+
+        <Grid Grid.ColumnSpan="2">
+            <Border Margin="252,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="338" Height="77">
+                <TextBox Name="CustomerTextBox" HorizontalAlignment="Left" Margin="16,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="308" Height="44" Style="{StaticResource ModernTextbox}" BorderBrush="#FFB1B4BB" Foreground="Black" Background="Black" FontFamily="Arial"/>
+            </Border>
+        </Grid>
+
         <Border CornerRadius="10" HorizontalAlignment="Left" Height="57" VerticalAlignment="Top" Width="873" Opacity="0.225" Background="#FF949292" Grid.Column="1" Margin="40,284,0,0" Grid.Row="1"/>
         <Border CornerRadius="10" HorizontalAlignment="Left" Height="57" VerticalAlignment="Top" Width="872" Opacity="0.225" Background="#FF949292" Grid.Column="1" Margin="41,465,0,0" Grid.Row="1"/>
         <Border CornerRadius="10" HorizontalAlignment="Left" Height="52" VerticalAlignment="Top" Width="873" Opacity="0.225" Background="#FF949292" Grid.Column="1" Margin="41,378,0,0" Grid.Row="1"/>
         <Border CornerRadius="10" HorizontalAlignment="Left" Height="191" VerticalAlignment="Top" Width="187" Opacity="0.225" Background="#FF949292" Grid.Column="1" Margin="743,6,0,0" Grid.Row="1"/>
         <Label Content="Ressourcer" HorizontalAlignment="Left" Margin="8,189,0,0" VerticalAlignment="Top" Background="{x:Null}" FontSize="20" FontFamily="Arial" Width="124" Grid.Column="1" Grid.Row="1" Height="29"/>
         <Rectangle HorizontalAlignment="Left" Height="4" Margin="127,205,0,0" VerticalAlignment="Top" Width="804" Opacity="0.5" Fill="#FF47A200" Grid.Column="1" Grid.Row="1"/>
-        <Button Content="Certifikat" HorizontalAlignment="Left" Margin="42,300,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF47A200" FontFamily="Arial" FontSize="20" BorderBrush="{x:Null}" Height="25" FontStyle="Italic" Width="94" Grid.Column="1" Grid.Row="1"/>
-        <Button Content="Monteringsguide" HorizontalAlignment="Left" Margin="41,389,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF47A200" FontFamily="Arial" FontSize="20" BorderBrush="{x:Null}" Height="26" FontStyle="Italic" Width="155" Grid.Column="1" Grid.Row="1"/>
+        <Button x:Name="CertifikatBt" Content="Certifikat" HorizontalAlignment="Left" Margin="42,300,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF47A200" FontFamily="Arial" FontSize="20" BorderBrush="{x:Null}" Height="25" FontStyle="Italic" Width="94" Grid.Column="1" Grid.Row="1"/>
+        <Button x:Name="MonteringsguideBt" Content="Monteringsguide" HorizontalAlignment="Left" Margin="41,389,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF47A200" FontFamily="Arial" FontSize="20" BorderBrush="{x:Null}" Height="26" FontStyle="Italic" Width="155" Grid.Column="1" Grid.Row="1"/>
         <Label Content="Video" HorizontalAlignment="Left" Margin="191,387,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="7" Background="{x:Null}" Foreground="White" Opacity="0.47" Width="28" Grid.Column="1" Grid.Row="1" Height="18"/>
-        <Button Content="Garantibevis" HorizontalAlignment="Left" Margin="43,480,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF47A200" FontFamily="Arial" FontSize="20" BorderBrush="{x:Null}" Height="23" FontStyle="Italic" Width="124" Grid.Column="1" Grid.Row="1"/>
-        <Image HorizontalAlignment="Left" Height="170" Margin="756,14,0,0" VerticalAlignment="Top" Width="171" Source="/Views/Opera Snapshot_2022-03-03_105230_drive.google.com.png" Grid.Column="1" Grid.Row="1"/>
-        <Image Grid.Column="1" HorizontalAlignment="Left" Height="176" Margin="7,10,0,0" VerticalAlignment="Top" Width="164" Grid.Row="1"/>
+        <Button x:Name="GarantibevisBt" Content="Garantibevis" HorizontalAlignment="Left" Margin="43,480,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF47A200" FontFamily="Arial" FontSize="20" BorderBrush="{x:Null}" Height="23" FontStyle="Italic" Width="124" Grid.Column="1" Grid.Row="1"/>
+        <Image x:Name="QR_Image" HorizontalAlignment="Left" Height="170" Margin="756,14,0,0" VerticalAlignment="Top" Width="171" Source="/Views/Image/Opera Snapshot_2022-03-03_105230_drive.google.com.png" Grid.Column="1" Grid.Row="1"/>
+        <Image x:Name="KalibreImage" Grid.Column="1" HorizontalAlignment="Left" Height="176" Margin="7,10,0,0" VerticalAlignment="Top" Width="164" Grid.Row="1"/>
         <Grid Grid.Column="1" HorizontalAlignment="Left" Height="184" Margin="178,8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="545">
             <Border CornerRadius="10" HorizontalAlignment="Center" Height="182" VerticalAlignment="Center" Width="544" Opacity="0.225" Background="#FF949292"/>
             <Label Content="Artikel status:" HorizontalAlignment="Left" Margin="16,47,0,0" VerticalAlignment="Top" Background="{x:Null}" FontWeight="Bold" Height="40" Width="146" FontSize="18"/>
@@ -56,17 +63,17 @@
         </Grid>
         <Grid Height="40" Background="Transparent" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="854,474,0,0" Grid.Column="1" Grid.Row="1" Width="45">
             <Button Background="Transparent" BorderBrush="Transparent" FontFamily="Arial Black" Foreground="White" FontSize="14" HorizontalAlignment="Center" Width="39" Margin="0,0,0,1">
-                <Image Height="35" Width="36" Source="/Views/downloading_updates_64px.png"/>
+                <Image Height="35" Width="36" Source="/Views/Image/downloading_updates_64px.png"/>
             </Button>
         </Grid>
         <Grid Height="40" Background="Transparent" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="853,385,0,0" Grid.Column="1" Grid.Row="1" Width="45">
             <Button Background="Transparent" BorderBrush="Transparent" FontFamily="Arial Black" Foreground="White" FontSize="14" HorizontalAlignment="Center" Width="39" Margin="0,0,0,1">
-                <Image Height="35" Width="36" Source="/Views/downloading_updates_64px.png"/>
+                <Image Height="35" Width="36" Source="/Views/Image/downloading_updates_64px.png"/>
             </Button>
         </Grid>
         <Grid Height="40" Background="Transparent" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="853,294,0,0" Grid.Column="1" Grid.Row="1" Width="45">
             <Button Background="Transparent" BorderBrush="Transparent" FontFamily="Arial Black" Foreground="White" FontSize="14" HorizontalAlignment="Center" Width="40" Margin="0,0,0,1">
-                <Image Height="35" Width="36" Source="/Views/downloading_updates_64px.png"/>
+                <Image Height="35" Width="36" Source="/Views/Image/downloading_updates_64px.png"/>
             </Button>
         </Grid>
     </Grid>

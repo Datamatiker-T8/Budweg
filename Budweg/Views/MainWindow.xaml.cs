@@ -19,6 +19,7 @@ namespace Budweg
 {
     public partial class MainWindow : Window
     {
+        bool HideMainTextBox;
         
         public MainWindow()
         {
@@ -37,7 +38,6 @@ namespace Budweg
             Information im = new Information();
             MainFrameWindow.Navigate(im);
         }
-
 
         private void kundesupportbt_Click(object sender, RoutedEventArgs e)
         {

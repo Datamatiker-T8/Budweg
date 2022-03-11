@@ -7,9 +7,9 @@
         mc:Ignorable="d"
         Title="CreateWindow" Height="450" Width="800">
     <Grid>
-        <Button Content="OK" HorizontalAlignment="Left" Margin="171,321,0,0" VerticalAlignment="Top" Click="Button_Click" Width="53"/>
+        <Button Content="OK" HorizontalAlignment="Left" Margin="171,321,0,0" VerticalAlignment="Top" Click="Button_Click" Width="53" AllowDrop="True"/>
         <Button Content="Cancel" HorizontalAlignment="Left" Margin="411,319,0,0" VerticalAlignment="Top" Click="Button_Click_1" Width="66"/>
-        <TextBox x:Name="BudwegNO" HorizontalAlignment="Left" Margin="176,84,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="BudwegNO" HorizontalAlignment="Left" Margin="176,84,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" AllowDrop="False"/>
         <TextBox x:Name="QRLINK" HorizontalAlignment="Left" Margin="176,161,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="Label" HorizontalAlignment="Left" Margin="71,90,0,0" VerticalAlignment="Top"/>
         <Label Content="Label" HorizontalAlignment="Left" Margin="68,161,0,0" VerticalAlignment="Top"/>
