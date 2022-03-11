@@ -14,9 +14,9 @@
 
         <Frame x:Name="MainFrameWindow" NavigationUIVisibility="Hidden" Margin="0,0,-1,0" Grid.ColumnSpan="2"/>
 
-        <Grid Grid.ColumnSpan="2">
-            <Border Margin="252,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="338" Height="77">
-                <TextBox HorizontalAlignment="Left" Margin="16,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="308" Height="44" Style="{StaticResource ModernTextbox}" BorderBrush="#FFB1B4BB" Foreground="Black" Background="Black" FontFamily="Arial"/>
+        <Grid Grid.ColumnSpan="2" Visibility="Visible">
+            <Border Margin="252,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="338" Height="77" Visibility="Visible">
+                <TextBox Name="MainTextBox" HorizontalAlignment="Left" Margin="16,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="308" Height="44" Style="{StaticResource ModernTextbox}" BorderBrush="#FFB1B4BB" Foreground="Black" Background="Black" FontFamily="Arial"/>
             </Border>
         </Grid>
 
@@ -33,16 +33,16 @@
                 <Border x:Name="sidePanel" Background="#049b4b" HorizontalAlignment="Left" Width="224" CornerRadius="0,12,12,0" BorderThickness="0,0,0,0" Margin="0,0,0,1">
                     <StackPanel HorizontalAlignment="Left" Width="220" Margin="0,4,0,0">
                         <Grid Height="40" Background="Transparent" HorizontalAlignment="Left" Margin="0,115,0,-84" Width="212">
-                            <Image Source="/Views/overview_40px.png" VerticalAlignment="Top" HorizontalAlignment="Left" Width="54" Margin="4,-3,0,0" Height="42"/>
+                            <Image Source="/Views/Image/overview_40px.png" VerticalAlignment="Top" HorizontalAlignment="Left" Width="54" Margin="4,-3,0,0" Height="42"/>
                             <Button x:Name="Overviewbt" FontFamily="Bahnschrift" Content="Overview" Height="38" Background="Transparent" BorderBrush="Transparent" Margin="54,2,0,0" Foreground="White" FontSize="20" HorizontalAlignment="Left" Width="96" Click="Overviewbt_Click" FontWeight="Normal"/>
                         </Grid>
                         <Grid Height="40" Background="Transparent" Margin="0,121,0,-84" HorizontalAlignment="Left" Width="215">
                             <Button x:Name="Infobt" Content="Statistics" Height="38" Background="Transparent" BorderBrush="Transparent" FontFamily="Bahnschrift" Foreground="White" FontSize="20" Margin="52,3,0,-1" Click="Infobt_Click" HorizontalAlignment="Left" Width="102"/>
-                            <Image  Source="/Views/user_manual_40px.png" VerticalAlignment="Top" HorizontalAlignment="Left" Width="54" Margin="5,1,0,0" Height="42"/>
+                            <Image  Source="/Views/Image/user_manual_40px.png" VerticalAlignment="Top" HorizontalAlignment="Left" Width="54" Margin="5,1,0,0" Height="42"/>
                         </Grid>
                         <Grid Height="40" Background="Transparent" Margin="0,127,0,-84" HorizontalAlignment="Left" Width="216">
                             <Button x:Name="kundesupportbt" Content="CustomerSupport" Height="38" Background="Transparent" BorderBrush="Transparent" Margin="43,2,0,0" FontFamily="Bahnschrift" Foreground="White" Click="kundesupportbt_Click" FontWeight="Normal" FontSize="20" HorizontalAlignment="Left" Width="172"/>
-                            <Image Source="/Views/contacts_40px.png" VerticalAlignment="Center" HorizontalAlignment="Left" Width="54" Margin="2,0,0,0" Height="42"/>
+                            <Image Source="/Views/Image/contacts_40px.png" VerticalAlignment="Center" HorizontalAlignment="Left" Width="54" Margin="2,0,0,0" Height="42"/>
                         </Grid>
                     </StackPanel>
                 </Border>
@@ -50,7 +50,7 @@
         </Grid>
         <Grid Background="Transparent" HorizontalAlignment="Left" Margin="890,2,0,593" Width="51" Grid.Column="1">
             <Button x:Name="Close" FontFamily="Bahnschrift" Height="38" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontSize="20" HorizontalAlignment="Center" Width="39" FontWeight="Normal" VerticalAlignment="Center" Click="Close_Click">
-                <Image Source="/Views/Close_40px.png" VerticalAlignment="Center" HorizontalAlignment="Center" Width="41" Height="42" />
+                <Image Source="/Views/Image/Close_40px.png" VerticalAlignment="Center" HorizontalAlignment="Center" Width="41" Height="42" />
             </Button>
         </Grid>
     </Grid>
