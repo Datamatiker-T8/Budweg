@@ -43,10 +43,9 @@ namespace Budweg
 
                 myComboBox.ItemsSource = dt.DefaultView;
                 myComboBox.DisplayMemberPath = "BudwegNo";
-                myComboBox.SelectedValuePath = "BrakeCaliberID";
-
             }
 
         }
+
     }
 }
