@@ -24,14 +24,35 @@
                 <TextBox Name="StaticesBox" HorizontalAlignment="Left" Margin="16,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="308" Height="44" Style="{StaticResource ModernTextbox}" BorderBrush="#FFB1B4BB" Foreground="Black" Background="Black" FontFamily="Arial"/>
             </Border>
         </Grid>
-
-        <syncfusion:SfChart AreaBackground="White" Margin="4,8,17,16" Grid.Column="1" Grid.Row="1">
-            <syncfusion:SfChart.PrimaryAxis>
-                <syncfusion:CategoryAxis />
-            </syncfusion:SfChart.PrimaryAxis>
-            <syncfusion:SfChart.SecondaryAxis>
-                <syncfusion:NumericalAxis/>
-            </syncfusion:SfChart.SecondaryAxis>
-        </syncfusion:SfChart>
+        <Border Background="#FF05A000" Grid.Column="1" Margin="22,399,668,48" Grid.Row="1" CornerRadius="15" Opacity="0.8">
+            <Rectangle HorizontalAlignment="Left" Height="131" VerticalAlignment="Top" Width="162" Opacity="0.23" Fill="#FF949292" Margin="470,189,0,0" Grid.Column="1" Grid.Row="1"/>
+        </Border>
+        <Border Background="#FF05A000" Grid.Column="1" Margin="23,211,669,236" Grid.Row="1" CornerRadius="15" Opacity="0.8">
+            <Rectangle HorizontalAlignment="Left" Height="131" VerticalAlignment="Top" Width="162" Opacity="0.23" Fill="#FF949292" Margin="470,189,0,0" Grid.Column="1" Grid.Row="1"/>
+        </Border>
+        <Border Background="#FF05A000" Grid.Column="1" Margin="22,19,668,429" Grid.Row="1" CornerRadius="15" Opacity="0.8">
+            <Rectangle HorizontalAlignment="Left" Height="131" VerticalAlignment="Top" Width="162" Opacity="0.23" Fill="#FF949292" Margin="470,189,0,0" Grid.Column="1" Grid.Row="1"/>
+        </Border>
+        <Label Grid.Column="1" Content="Downloads" HorizontalAlignment="Left" Margin="81,399,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="24" FontFamily="Bahnschrift SemiBold" Width="135"/>
+        <Label Grid.Column="1" Content="Views" HorizontalAlignment="Left" Margin="111,211,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="24" FontFamily="Bahnschrift SemiBold" Width="76"/>
+        <Label Grid.Column="1" Content="Resources" HorizontalAlignment="Left" Margin="80,19,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="24" FontFamily="Bahnschrift SemiBold" Width="135"/>
+        <Border Grid.Column="1" Margin="356,19,27,48" Grid.Row="1" CornerRadius="15" Opacity="0.8" Background="#FF036900"/>
+        <Label Grid.Column="1" Content="Comments" HorizontalAlignment="Left" Margin="544,19,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="36" FontFamily="Bahnschrift SemiBold" Width="185"/>
+        <Border Grid.Column="1" Margin="371,72,43,447" Grid.Row="1" CornerRadius="15" Background="#FFC1C1C1" Opacity="0.75"/>
+        <Border Margin="60,67,705,452" Grid.Row="1" CornerRadius="15" Background="#FFC1C1C1" Grid.Column="1" Opacity="0.75"/>
+        <Border Grid.Column="1" Margin="371,156,43,363" Grid.Row="1" CornerRadius="15" Background="#FFC1C1C1" Opacity="0.75"/>
+        <Border Grid.Column="1" Margin="372,239,42,280" Grid.Row="1" CornerRadius="15" Background="#FFC1C1C1" Opacity="0.75"/>
+        <Border Grid.Column="1" Margin="371,323,43,196" Grid.Row="1" CornerRadius="15" Background="#FFC1C1C1" Opacity="0.75"/>
+        <Border Grid.Column="1" Margin="372,409,43,110" Grid.Row="1" CornerRadius="15" Background="#FFC1C1C1" Opacity="0.75"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="389,85,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" FontSize="22" FontFamily="Arial Black" Width="498"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="389,169,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" FontSize="22" FontFamily="Arial Black" Width="498"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="389,252,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" FontSize="22" FontFamily="Arial Black" Width="498"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="389,336,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" FontSize="22" FontFamily="Arial Black" Width="498"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="389,422,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" FontSize="22" FontFamily="Arial Black" Width="498"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="87,80,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" FontSize="22" FontFamily="Arial Black"/>
+        <Border Margin="60,259,705,260" Grid.Row="1" CornerRadius="15" Background="#FFC1C1C1" Grid.Column="1" Opacity="0.75"/>
+        <Border Margin="60,447,705,72" Grid.Row="1" CornerRadius="15" Background="#FFC1C1C1" Grid.Column="1" Opacity="0.75"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="88,460,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" FontSize="22" FontFamily="Arial Black"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="87,0,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Center" FontSize="22" FontFamily="Arial Black"/>
     </Grid>
 </Page>
