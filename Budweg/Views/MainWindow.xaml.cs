@@ -19,7 +19,6 @@ namespace Budweg
 {
     public partial class MainWindow : Window
     {
-        bool HideMainTextBox;
         
         public MainWindow()
         {
