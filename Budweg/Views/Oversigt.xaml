@@ -18,17 +18,23 @@
             <ColumnDefinition Width="321*"/>
         </Grid.ColumnDefinitions>
 
-        <Border Background="#FFA7A5A5" Grid.Column="1" Margin="715,36,18,339" Grid.Row="1" CornerRadius="10">
+        <Grid  Grid.ColumnSpan="2" Visibility="Visible">
+            <Border Margin="252,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="338" Height="77" Visibility="Visible">
+                <TextBox Name="OverviewTextBox" HorizontalAlignment="Left" Margin="16,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="308" Height="44" Style="{StaticResource ModernTextbox}" BorderBrush="#FFB1B4BB" Foreground="Black" Background="Black" FontFamily="Arial"/>
+            </Border>
+        </Grid>
+
+        <Border Background="#FF949292" Grid.Column="1" Margin="715,36,18,339" Grid.Row="1" CornerRadius="10" Opacity="0.23">
+            <Rectangle HorizontalAlignment="Left" Height="131" VerticalAlignment="Top" Width="162" Opacity="0.23" Fill="#FF949292" Margin="470,189,0,0" Grid.Column="1" Grid.Row="1"/>
+        </Border>
+        <Border Background="#FF949292" Grid.Column="1" Margin="714,275,18,90" Grid.Row="1" CornerRadius="10" Opacity="0.23">
             <Rectangle HorizontalAlignment="Left" Height="131" VerticalAlignment="Top" Width="162" Opacity="0.225" Fill="#FF949292" Margin="470,189,0,0" Grid.Column="1" Grid.Row="1"/>
         </Border>
-        <Border Background="#FFA7A5A5" Grid.Column="1" Margin="714,275,18,90" Grid.Row="1" CornerRadius="10">
-            <Rectangle HorizontalAlignment="Left" Height="131" VerticalAlignment="Top" Width="162" Opacity="0.225" Fill="#FF949292" Margin="470,189,0,0" Grid.Column="1" Grid.Row="1"/>
-        </Border>
-        <Border Background="#FFD6CDCD" Grid.Column="1" Margin="725,292,29,242" Grid.Row="1" CornerRadius="5" >
+        <Border Background="#FF8E8D8D" Grid.Column="1" Margin="725,292,29,242" Grid.Row="1" CornerRadius="5" >
             <Rectangle HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="25" Opacity="0.62" Fill="#FF949292" Margin="690,249,0,0" Grid.Column="1" Grid.Row="1"/>
         </Border>
-        <Button Style="{StaticResource RoundCorner}" Grid.Column="1" Content="Opret" HorizontalAlignment="Left" Margin="68,505,0,0" Grid.Row="1" VerticalAlignment="Top" Height="42" Width="167" Background="#FFDDDDDD"/>
-        <Border Background="#FFD6CDCD" Grid.Column="1" Margin="724,420,29,115" Grid.Row="1" CornerRadius="5" >
+        <Button Style="{StaticResource RoundCorner}" Grid.Column="1" Content="Opret" HorizontalAlignment="Left" Margin="68,505,0,0" Grid.Row="1" VerticalAlignment="Top" Height="42" Width="167" Background="#FFDDDDDD" Click="Button_Click"/>
+        <Border Background="#FF8E8D8D" Grid.Column="1" Margin="724,420,29,115" Grid.Row="1" CornerRadius="5" >
             <Rectangle HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="25" Opacity="0.62" Fill="#FF949292" Margin="690,249,0,0" Grid.Column="1" Grid.Row="1"/>
         </Border>
         <Button Style="{StaticResource RoundCorner}" Grid.Column="1" Content="Slet" HorizontalAlignment="Left" Margin="282,505,0,0" Grid.Row="1" VerticalAlignment="Top" Height="42" Width="167"/>
@@ -40,7 +46,7 @@
         </Border>
         <Grid Height="24" Background="Transparent" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="883,298,0,0" Grid.Column="1" Grid.Row="1" Width="23">
             <Button Background="Transparent" BorderBrush="Transparent" FontFamily="Arial Black" Foreground="White" FontSize="14" HorizontalAlignment="Center" Width="24" Margin="0,0,0,-1">
-                <Image Height="20" Width="18" Source="/Views/upload_40px.png" OpacityMask="Black"/>
+                <Image Height="20" Width="18" Source="/Views/Image/upload_40px.png" OpacityMask="Black"/>
             </Button>
         </Grid>
         <Border Background="#FF656565" Grid.Column="1" Margin="882,427,37,119" Grid.Row="1" CornerRadius="5" >
@@ -48,7 +54,7 @@
         </Border>
         <Grid Height="23" Background="Transparent" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="884,426,0,0" Grid.Column="1" Grid.Row="1" Width="20">
             <Button Background="Transparent" BorderBrush="Transparent" FontFamily="Arial Black" Foreground="White" FontSize="14" HorizontalAlignment="Center" Width="24" Margin="0,0,0,-1">
-                <Image Height="20" Width="19" Source="/Views/upload_40px.png" OpacityMask="Black"/>
+                <Image Height="20" Width="19" Source="/Views/Image/upload_40px.png" OpacityMask="Black"/>
             </Button>
         </Grid>
         <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="729,302,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="109"/>

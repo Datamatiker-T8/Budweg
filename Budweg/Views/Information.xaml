@@ -18,6 +18,13 @@
             <ColumnDefinition Width="79*"/>
             <ColumnDefinition Width="321*"/>
         </Grid.ColumnDefinitions>
+
+        <Grid Grid.ColumnSpan="2">
+            <Border Margin="252,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="338" Height="77">
+                <TextBox Name="StaticesBox" HorizontalAlignment="Left" Margin="16,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="308" Height="44" Style="{StaticResource ModernTextbox}" BorderBrush="#FFB1B4BB" Foreground="Black" Background="Black" FontFamily="Arial"/>
+            </Border>
+        </Grid>
+
         <syncfusion:SfChart AreaBackground="White" Margin="4,8,17,16" Grid.Column="1" Grid.Row="1">
             <syncfusion:SfChart.PrimaryAxis>
                 <syncfusion:CategoryAxis />

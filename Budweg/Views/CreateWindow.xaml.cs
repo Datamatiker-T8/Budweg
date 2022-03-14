@@ -1,5 +1,4 @@
-﻿using Budweg.Views;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,30 +10,30 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Budweg
+namespace Budweg.Views
 {
     /// <summary>
-    /// Interaction logic for Oversigt.xaml
+    /// Interaction logic for CreateWindow.xaml
     /// </summary>
-    public partial class Oversigt : Page
+    public partial class CreateWindow : Window
     {
-        public Oversigt()
+        public CreateWindow()
         {
             InitializeComponent();
         }
 
-        private void OverViewList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
+            string Budwegno = BudwegNO.Text;
+            string LINKS = QRLINK.Text;
 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            CreateWindow OC = new();
-            OC.Show();
+            Close();
         }
     }
 }
