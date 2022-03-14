@@ -31,7 +31,7 @@ namespace Budweg.Persistence
                         int Views = int.Parse(reader["Views"].ToString());
                         string Version = reader["Version"].ToString();
 
-                        resources.Add(new Resource(Title, Version, RessourceID, Views));
+                        resources.Add(new Resource(Title, Version));
                     }
                 }
             }
