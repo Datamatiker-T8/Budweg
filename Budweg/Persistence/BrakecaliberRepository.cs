@@ -11,27 +11,34 @@ namespace Budweg.Persistence
 {
     public class BrakecaliberRepository
     {
-        private List<BrakeCaliber> brakeCalibers = new();
+        private List<BrakeCaliber> brakeCalibers;
         private string P1DB08ConnectionPath = "Server=10.56.8.36;Database=P1DB08; User Id=P1-08;Password=OPENDB_08;";
         public BrakecaliberRepository() // create
         {
+            brakeCalibers = new();
             using (SqlConnection connection = new(P1DB08ConnectionPath))
             {
                 connection.Open();
                 string table = "BRAKECALIBER";
-                string values = "BrakeCaliberID, BudwegNo, QR_Code, LinkQRCode";
+                string values = "BrakeCaliberID, CaliberName, BudwegNo, StockStatus, BrakeSystem, QR_Code, LinkQRCode";
                 string CommandText = $"SELECT {values} FROM {table}";
-
                 SqlCommand sQLCommand = new(CommandText, connection);
                 using (SqlDataReader sqldatareader = sQLCommand.ExecuteReader())
                 {
                     while (sqldatareader.Read() != false)
-                    { 
+                    {
                         int brakeCaliberID = int.Parse(sqldatareader["BrakeCaliberID"].ToString());
+                        string caliberName = sqldatareader["CaliberName"].ToString();
                         string budwegNo = sqldatareader["BudwegNo"].ToString();
+                        bool stockStatus = sqldatareader["StockStatus"].ToString() == "1";
+                        string brakeSystem = sqldatareader["BrakeSystem"].ToString();
                         string linkQRCode = sqldatareader["LinkQRCode"].ToString();
 
-                        brakeCalibers.Add(new BrakeCaliber(budwegNo, linkQRCode));
+                        // result = (someBool) ? if true : if false
+                        BrakeCaliber bc = (brakeCaliberID != -1)
+                            ? new(brakeCaliberID, caliberName, budwegNo, stockStatus, brakeSystem, linkQRCode)
+                            : new(caliberName, budwegNo, stockStatus, brakeSystem, linkQRCode);
+                        brakeCalibers.Add(bc);
                     }
                 }
             }
@@ -43,20 +50,28 @@ namespace Budweg.Persistence
             {
                 connection.Open();
                 result = brakeCaliber.BrakeCaliberId;
+                string caliberName = brakeCaliber.CaliberName;
                 string BudwegNo = brakeCaliber.BudwegNo;
+                bool stockStatus = brakeCaliber.StockStatus;
                 string linkQRCode = brakeCaliber.LinkQRCode;
+                string brakeSystem = brakeCaliber.BrakeSystem;
 
                 string table = "BRAKECALIBER";
-                string coloumns = "BrakeCaliberID, BudwegNo, QR_Code, LinkQRCode";
-                string values = $"@{result}, @{BudwegNo}, @{linkQRCode}";
+                string coloumns = "BRAKECALIBER.CaliberName, BRAKECALIBER.BudwegNo, BRAKECALIBER.StockStatus, BRAKECALIBER.BrakeSystem, BRAKECALIBER.LinkQRCode";
+                string values = "@caliberName, @BudwegNo, @stockStatus, @brakeSystem, @linkQRCode";
                 string query =
                     $"INSERT INTO {table} ({coloumns})" +
-                    $"VALUES({values})";
+                    $"VALUES ({values})";
 
-                SqlCommand sqlCommand = new(query);
-                sqlCommand.Parameters.Add($"@{result}", SqlDbType.Int);
-                sqlCommand.Parameters.Add($"@{BudwegNo}", SqlDbType.NVarChar);
-                sqlCommand.Parameters.Add($"@{linkQRCode}", SqlDbType.NVarChar);
+                SqlCommand sqlCommand = new(query, connection);
+                
+                sqlCommand.Parameters.Add("@caliberName", SqlDbType.NVarChar).Value = brakeCaliber.CaliberName;
+                sqlCommand.Parameters.Add("@BudwegNo", SqlDbType.NVarChar).Value = brakeCaliber.BudwegNo;
+                sqlCommand.Parameters.Add("@stockStatus", SqlDbType.Bit).Value = brakeCaliber.StockStatus;
+                sqlCommand.Parameters.Add("@brakeSystem", SqlDbType.NVarChar).Value = brakeCaliber.BrakeSystem;
+                sqlCommand.Parameters.Add("@linkQRCode", SqlDbType.NVarChar).Value = brakeCaliber.LinkQRCode;
+
+                sqlCommand.ExecuteNonQuery();
             }
             return result; 
         }
@@ -86,7 +101,7 @@ namespace Budweg.Persistence
                 string linkQRCode = brakeCaliber.LinkQRCode;
 
                 string table = "BRAKECALIBER";
-                string values = $"@{id}, @{BudwegNo}, @{linkQRCode}";
+                string values = $"@{id}, @{BudwegNo}, @{linkQRCode}"; 
                 string query =
                     $"UPDATE {table}" +
                     $"SET BudwegNo = @'{BudwegNo}', LinkQRCode = @'{linkQRCode}', " +
