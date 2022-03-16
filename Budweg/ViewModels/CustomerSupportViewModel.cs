@@ -41,11 +41,16 @@ namespace Budweg.ViewModels
         //
         // -------------------------------------------
 
-        public void AddBrakeCaliber(string modelNumber, string linkQRCode) 
+        public void AddBrakeCaliber(int brakeCaliberId, string caliberName, string budwegNo, bool stockStatus, string brakeSystem, string linkQRCode)
         {
-            BrakeCaliber brakeCaliber = new BrakeCaliber(modelNumber, linkQRCode);
+            BrakeCaliber brakeCaliber = new(brakeCaliberId, caliberName, budwegNo, stockStatus, brakeSystem, linkQRCode);
             int addedCaliber = brakeRepo.Add(brakeCaliber);
-
+            brakeCaliberList.Add(brakeRepo.GetById(addedCaliber));
+        }
+        public void AddBrakeCaliber(string caliberName, string budwegNo, bool stockStatus, string brakeSystem, string linkQRCode)
+        {
+            BrakeCaliber brakeCaliber = new(caliberName, budwegNo, stockStatus, brakeSystem, linkQRCode);
+            int addedCaliber = brakeRepo.Add(brakeCaliber);
             brakeCaliberList.Add(brakeRepo.GetById(addedCaliber));
         }
 

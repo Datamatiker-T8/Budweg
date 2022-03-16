@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Budweg.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,16 +20,22 @@ namespace Budweg.Views
     /// </summary>
     public partial class CreateWindow : Window
     {
+        CreateBrakeCaliberViewModel vm;
         public CreateWindow()
         {
+            vm = new();
             InitializeComponent();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            string Budwegno = BudwegNO.Text;
-            string LINKS = QRLINK.Text;
-
+            string budwegNo = BudwegNO.Text;
+            string linkQRCode = QRLINK.Text;
+            string caliberName = Name.Text;
+            bool stockStatus = StockStatus.IsEnabled;
+            string brakeSystem = BrakeSystem.Text;
+            vm.AddBrakeCaliber(caliberName, budwegNo, stockStatus, brakeSystem, linkQRCode);
+            Close();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
