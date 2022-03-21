@@ -11,33 +11,33 @@ namespace Budweg.ViewModels
 {
     public class CreateBrakeCaliberViewModel
     {
-        BrakecaliberRepository bcrepo = new();
-        public ObservableCollection<BrakeCaliber> bcList { get; set; } = new ObservableCollection<BrakeCaliber>();
+        BrakecaliberRepository brakeRepo = new();
+        public ObservableCollection<BrakeCaliber> brakeCaliberList { get; set; } = new ObservableCollection<BrakeCaliber>();
         public CreateBrakeCaliberViewModel()
         {
-            foreach (BrakeCaliber brake in bcrepo.GetAll())
+            foreach (BrakeCaliber brake in brakeRepo.GetAll())
             {
-                bcList.Add(brake);
+                brakeCaliberList.Add(brake);
             }
         }
 
         public void AddBrakeCaliber(int brakeCaliberId, string caliberName, string budwegNo, bool stockStatus, string brakeSystem, string linkQRCode)
         {
             BrakeCaliber brakeCaliber = new(brakeCaliberId, caliberName, budwegNo, stockStatus, brakeSystem, linkQRCode);
-            int addedCaliber = bcrepo.Add(brakeCaliber);
-            bcList.Add(bcrepo.GetById(addedCaliber));
+            int addedCaliber = brakeRepo.Add(brakeCaliber);
+            brakeCaliberList.Add(brakeRepo.GetById(addedCaliber));
         }
         public void AddBrakeCaliber(string caliberName, string budwegNo, bool stockStatus, string brakeSystem, string linkQRCode)
         {
             BrakeCaliber brakeCaliber = new(caliberName, budwegNo, stockStatus, brakeSystem, linkQRCode);
-            int addedCaliber = bcrepo.Add(brakeCaliber);
-            bcList.Add(bcrepo.GetById(addedCaliber));
+            int addedCaliber = brakeRepo.Add(brakeCaliber);
+            brakeCaliberList.Add(brakeRepo.GetById(addedCaliber));
         } 
 
         public BrakeCaliber GetBrakeCaliber(int id)
         {
             BrakeCaliber brakeCaliberResult = null;
-            foreach (BrakeCaliber brake in bcList)
+            foreach (BrakeCaliber brake in brakeCaliberList)
             {
                 if (id == brake.BrakeCaliberId)
                 {
@@ -49,7 +49,7 @@ namespace Budweg.ViewModels
 
         public void UpdateBrakeCaliber(int id, string modelNumber, string linkQRCode)
         {
-            foreach (BrakeCaliber brake in bcList)
+            foreach (BrakeCaliber brake in brakeCaliberList)
             {
                 if (id == brake.BrakeCaliberId)
                 {
@@ -61,12 +61,12 @@ namespace Budweg.ViewModels
 
         public void DeleteBrakeCaliber(int id)
         {
-            foreach (BrakeCaliber brake in bcList)
+            foreach (BrakeCaliber brake in brakeCaliberList)
             {
                 if (id == brake.BrakeCaliberId)
                 {
-                    bcList.Remove(brake);
-                    bcrepo.Remove(brake);
+                    brakeCaliberList.Remove(brake);
+                    brakeRepo.Remove(brake);
                 }
             }
         }

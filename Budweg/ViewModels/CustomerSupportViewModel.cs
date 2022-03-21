@@ -111,7 +111,7 @@ namespace Budweg.ViewModels
             Resource resourceResult = null;
             foreach (Resource resource in resourceList)
             {
-                if (id == resource.Id)
+                if (id == resource.ResourceId)
                 {
                     resourceResult = resource;
                 }
@@ -123,7 +123,7 @@ namespace Budweg.ViewModels
         {
             foreach (Resource resource in resourceList)
             {
-                if (id == resource.Id)
+                if (id == resource.ResourceId)
                 {
                     resource.Title = title;
                     resource.VersionNumber = versionNumber;
@@ -136,7 +136,7 @@ namespace Budweg.ViewModels
         {
             foreach (Resource resource in resourceList)
             {
-                if (id == resource.Id)
+                if (id == resource.ResourceId)
                 {
                     resourceList.Remove(resource);
                     resourceRepo.Remove(resource);
@@ -163,7 +163,7 @@ namespace Budweg.ViewModels
             Feedback feedbackResult = null;
             foreach (Feedback feedback in feedbackList)
             {
-                if (id == feedback.Id)
+                if (id == feedback.FeedbackId)
                 {
                     feedbackResult = feedback;
                 }
@@ -175,7 +175,7 @@ namespace Budweg.ViewModels
         {
             foreach(Feedback feedback in feedbackList)
             {
-                if (id == feedback.Id)
+                if (id == feedback.FeedbackId)
                 {
                     feedback.Rating = rating;
                     feedback.Description = description;
@@ -188,7 +188,7 @@ namespace Budweg.ViewModels
         {
             foreach (Feedback feedback in feedbackList)
             {
-                if (id == feedback.Id)
+                if (id == feedback.FeedbackId)
                 {
                     feedbackList.Remove(feedback);
                     feedbackRepo.Remove(feedback);

@@ -37,8 +37,10 @@ namespace Budweg.Domain
         public BrakeCaliber(string caliberName, string budwegNo, bool stockStatus, string brakeSystem, string linkQRCode) 
             : this( -1, caliberName, budwegNo, stockStatus, brakeSystem, linkQRCode)
         { }
-        public BrakeCaliber() : this(-1, "", "", false, "", "")
-        { }
+        
+        //SKAL Fjernes
+        //public BrakeCaliber() : this(-1, "", "", false, "", "")
+        //{ }
 
         public static byte[] GenerateQRCode(string linkQRCode)
         {

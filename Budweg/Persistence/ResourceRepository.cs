@@ -42,7 +42,7 @@ namespace Budweg.Persistence
             using (SqlConnection con = new(P1DB08ConnectionPath))
             {
                 con.Open();
-                result = resource.Id;
+                result = resource.ResourceId;
                 int Views = resource.Views;
                 string Title = resource.Title;
                 string Version = resource.VersionNumber;
@@ -69,7 +69,7 @@ namespace Budweg.Persistence
             Resource result = null;
             foreach (Resource resource in resources)
             {
-                if (resource.Id.Equals(id))
+                if (resource.ResourceId.Equals(id))
                 {
                     result = resource;
                 }
@@ -84,7 +84,7 @@ namespace Budweg.Persistence
             {
                 connection.Open();
                 string table = "RESSOURCE";
-                string query = $"DELETE FROM {table} WHERE {resource.Id} = @RessourceID";
+                string query = $"DELETE FROM {table} WHERE {resource.ResourceId} = @RessourceID";
                 SqlCommand cmd = new SqlCommand(query);
             }
         }

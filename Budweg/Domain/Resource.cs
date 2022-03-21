@@ -8,11 +8,20 @@ namespace Budweg.Domain
 {
     public class Resource
     {
-        public int Id { get; set; }
+        public int ResourceId { get; set; }
         public string Title { get; set; }
         public int Views { get; }
         public string VersionNumber { get; set; }
         public List<BrakeCaliber> BrakeCalibers { get; set; }
+
+        public Resource(int resourceId, string title, int views, string versionNumber)
+        {
+            ResourceId = resourceId;
+            Title = title;
+            Views = views;
+            VersionNumber = versionNumber;
+            BrakeCalibers = new ();
+        }
 
         public Resource(string title, string versionNumber)
         {

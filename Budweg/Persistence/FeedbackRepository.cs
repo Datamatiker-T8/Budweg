@@ -47,7 +47,7 @@ namespace Budweg.Persistence
             using (SqlConnection con = new(P1DB08ConnectionPath))
             {
                 con.Open();
-                result = feedback.Id;
+                result = feedback.FeedbackId;
                 int feedbackRating = feedback.Rating;
                 string comment = feedback.Description;
 
@@ -71,7 +71,7 @@ namespace Budweg.Persistence
             Feedback result = null;
             foreach (Feedback feedback in feedbacks)
             {
-                if (feedback.Id.Equals(id))
+                if (feedback.FeedbackId.Equals(id))
                 {
                     result = feedback;
                 }
@@ -86,7 +86,7 @@ namespace Budweg.Persistence
             {
                 connection.Open();
                 string table = "FEEDBACK";
-                string query = $"DELETE FROM {table} WHERE {feedback.Id} = @FeedbackID";
+                string query = $"DELETE FROM {table} WHERE {feedback.FeedbackId} = @FeedbackID";
             }
         }
 

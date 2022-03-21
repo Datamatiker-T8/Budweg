@@ -9,7 +9,7 @@ namespace Budweg.Domain
 {
     public class Feedback
     {
-        public int Id { get; set; }
+        public int FeedbackId { get; set; }
         public int Rating { get; set; }
         public List<string> ImagePaths { get; set; }
         public string Description { get; set; }
@@ -21,11 +21,11 @@ namespace Budweg.Domain
         { 
         }
 
-        public Feedback(int rating, string description, int id)
+        public Feedback(int rating, string description, int feedbackId)
         {
             Rating = rating;
             Description = description;
-            Id = id;
+            FeedbackId = feedbackId;
         }
     }
 }

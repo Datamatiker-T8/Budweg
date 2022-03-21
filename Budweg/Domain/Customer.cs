@@ -8,13 +8,16 @@ namespace Budweg.Domain
 {
     public class Customer
     {
+
+        public int CustumerId { get; set; }
         public string Name { get; set; }
         public string TelephoneNumber { get; set; }
         public string CVRNumber { get; set; }
         public string Workshop { get; set; }
 
-        public Customer(string name, string telephoneNumber, string cVRNumber, string workshop)
+        public Customer(int custumerId, string name, string telephoneNumber, string cVRNumber, string workshop)
         {
+            CustumerId = custumerId;
             Name = name;
             TelephoneNumber = telephoneNumber;
             CVRNumber = cVRNumber;
