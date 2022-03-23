@@ -38,15 +38,15 @@ namespace Budweg.ViewModels
             }
         }
 
-        private List<BrakeCaliber> brakeList;
-        public List<BrakeCaliber> BrakeList
+        private List<BrakeCaliber> brakeList = new();
+        public List<BrakeCaliber> BrakeList 
         {
             get { return brakeList; }
-            set 
+            set
             {
                 brakeList = value;
             }
-        }
+        } 
 
         private BrakeCaliber selectedBrake;
         public BrakeCaliber SelectedBrake
@@ -59,44 +59,21 @@ namespace Budweg.ViewModels
                 Name = SelectedBrake.CaliberName;
             }
         }
-
-        private string CnnStr = Properties.Settings.Default.WPF_Connection;
         
         public CustomerSupportViewModel()
         {
-            DataSet ds = new DataSet();
-            using (SqlConnection connection = new SqlConnection(CnnStr))
+
+            foreach(BrakeCaliber brake in brakeRepo.GetAll())
             {
-                SqlDataAdapter dataAdapter = new SqlDataAdapter();
-                dataAdapter.SelectCommand = new SqlCommand("select * from [BRAKECALIBER]", connection);
-                dataAdapter.Fill(ds);
+                brakeList.Add(brake);
             }
-
-            DataTable dt = new DataTable();
-            dt = ds.Tables[0];
-            brakeList = new List<BrakeCaliber>();
-            for (int i = 0; i < dt.Rows.Count; i++)
-            {
-                DataRow dr = dt.NewRow();
-                dr = dt.Rows[i];
-                BrakeCaliber brakeCaliber = new BrakeCaliber();
-                brakeCaliber.BrakeCaliberId = (int)dr["BrakeCaliberId"];
-                brakeCaliber.CaliberName = dr["CaliberName"].ToString();
-                brakeCaliber.BudwegNo = dr["BudwegNo"].ToString();
-                brakeCaliber.StockStatus = bool.Parse(dr["StockStatus"].ToString());
-                brakeCaliber.BrakeSystem = dr["BrakeSystem"].ToString();
-                brakeCaliber.LinkQRCode = dr["LinkQRCode"].ToString();
-
-                brakeList.Add(brakeCaliber);
-            }
-
+            
             selectedBrake = brakeList[0];
+
+            
         }
 
-
-
         public ObservableCollection<BrakeCaliber> brakeCaliberList { get; set; }
-
         public ObservableCollection<Resource> resourceList { get; set; }
         public ObservableCollection<Feedback> feedbackList { get; set; }
 

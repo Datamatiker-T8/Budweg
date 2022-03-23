@@ -32,25 +32,6 @@ namespace Budweg
             DataContext = csvm;
         }
 
-        //private void FillComboBox()
-        //{
-        //    string conString = "Server=10.56.8.36;Database=P1DB08;User Id=P1-08;Password=OPENDB_08;";
-
-        //    using (SqlConnection con = new SqlConnection(conString))
-        //    {
-        //        SqlCommand cmd = new SqlCommand();
-        //        cmd.CommandText = "select * from [BRAKECALIBER]";
-        //        cmd.Connection = con;
-        //        SqlDataAdapter da = new SqlDataAdapter(cmd);
-        //        DataTable dt = new DataTable("BRAKECALIBER");
-        //        da.Fill(dt);
-
-        //        myComboBox.ItemsSource = dt.DefaultView;
-        //        myComboBox.DisplayMemberPath = "BudwegNo";
-        //    }
-
-        //}
-
         private void FillComboBox()
         {
             myComboBox.ItemsSource = csvm.BrakeList;

@@ -12,6 +12,7 @@ namespace Budweg.Persistence
     public class BrakecaliberRepository
     {
         private List<BrakeCaliber> brakeCalibers;
+        private string CnnStr = Properties.Settings.Default.WPF_Connection;
         private string P1DB08ConnectionPath = "Server=10.56.8.36;Database=P1DB08; User Id=P1-08;Password=OPENDB_08;";
         public BrakecaliberRepository() // create
         {
@@ -76,8 +77,34 @@ namespace Budweg.Persistence
             return result; 
         }
         public List<BrakeCaliber> GetAll() 
-        { 
-            return brakeCalibers; 
+        {
+            List<BrakeCaliber> brakeList = new List<BrakeCaliber>();
+            DataSet ds = new DataSet();
+            using (SqlConnection connection = new SqlConnection(CnnStr))
+            {
+                SqlDataAdapter dataAdapter = new SqlDataAdapter();
+                dataAdapter.SelectCommand = new SqlCommand("select * from [BRAKECALIBER]", connection);
+                dataAdapter.Fill(ds);
+            }
+
+            DataTable dt = new DataTable();
+            dt = ds.Tables[0];
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                DataRow dr = dt.NewRow();
+                dr = dt.Rows[i];
+                BrakeCaliber brakeCaliber = new BrakeCaliber();
+                brakeCaliber.BrakeCaliberId = (int)dr["BrakeCaliberId"];
+                brakeCaliber.CaliberName = dr["CaliberName"].ToString();
+                brakeCaliber.BudwegNo = dr["BudwegNo"].ToString();
+                brakeCaliber.StockStatus = bool.Parse(dr["StockStatus"].ToString());
+                brakeCaliber.BrakeSystem = dr["BrakeSystem"].ToString();
+                brakeCaliber.LinkQRCode = dr["LinkQRCode"].ToString();
+
+                brakeList.Add(brakeCaliber);
+            }
+
+            return brakeList;
         }
         public BrakeCaliber GetById(int id) 
         {
