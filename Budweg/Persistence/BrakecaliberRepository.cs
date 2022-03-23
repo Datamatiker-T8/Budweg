@@ -11,13 +11,22 @@ namespace Budweg.Persistence
 {
     public class BrakecaliberRepository
     {
+
+    // ======================================================
+    // Fields & Props
+    // ======================================================
+
         private List<BrakeCaliber> brakeCalibers;
         private string CnnStr = Properties.Settings.Default.WPF_Connection;
-        private string P1DB08ConnectionPath = "Server=10.56.8.36;Database=P1DB08; User Id=P1-08;Password=OPENDB_08;";
-        public BrakecaliberRepository() // create
+
+    // ======================================================
+    // Constructor: Adding every BrakeCaliber entity from database to "brakeCalibers" list.
+    // ======================================================
+
+        public BrakecaliberRepository()
         {
             brakeCalibers = new();
-            using (SqlConnection connection = new(P1DB08ConnectionPath))
+            using (SqlConnection connection = new(CnnStr))
             {
                 connection.Open();
                 string table = "BRAKECALIBER";
@@ -35,7 +44,6 @@ namespace Budweg.Persistence
                         string brakeSystem = sqldatareader["BrakeSystem"].ToString();
                         string linkQRCode = sqldatareader["LinkQRCode"].ToString();
 
-                        // result = (someBool) ? if true : if false
                         BrakeCaliber bc = (brakeCaliberID != -1)
                             ? new(brakeCaliberID, caliberName, budwegNo, stockStatus, brakeSystem, linkQRCode)
                             : new(caliberName, budwegNo, stockStatus, brakeSystem, linkQRCode);
@@ -44,10 +52,14 @@ namespace Budweg.Persistence
                 }
             }
         }
+
+    // ======================================================
+    // Repository CRUD: Create (Adding entity to database)
+    // ======================================================
         public int Add(BrakeCaliber brakeCaliber) 
         {
             int result = -1;
-            using (SqlConnection connection = new(P1DB08ConnectionPath))
+            using (SqlConnection connection = new(CnnStr))
             {
                 connection.Open();
                 result = brakeCaliber.BrakeCaliberId;
@@ -76,6 +88,12 @@ namespace Budweg.Persistence
             }
             return result; 
         }
+
+    // ======================================================
+    // Repository CRUD: Read (Reading entity from database)
+    // ======================================================
+
+        // Get all from database
         public List<BrakeCaliber> GetAll() 
         {
             List<BrakeCaliber> brakeList = new List<BrakeCaliber>();
@@ -106,6 +124,8 @@ namespace Budweg.Persistence
 
             return brakeList;
         }
+
+        // Get one entity from database by id
         public BrakeCaliber GetById(int id) 
         {
             BrakeCaliber result = null;
@@ -118,9 +138,14 @@ namespace Budweg.Persistence
             }
             return result;
         }
+
+    // ======================================================
+    // Repository CRUD: Update (Updating existing entity in database)
+    // ======================================================
+
         public void Update(BrakeCaliber brakeCaliber)
         {
-            using (SqlConnection connection = new(P1DB08ConnectionPath))
+            using (SqlConnection connection = new(CnnStr))
             {
                 connection.Open();
                 int id = brakeCaliber.BrakeCaliberId;
@@ -135,12 +160,15 @@ namespace Budweg.Persistence
                     $"WHERE BrakeCaliberId = {id}";
             }
         }
+
+    // ======================================================
+    // Repository CRUD: Delete (Delete existing entity from database)
+    // ======================================================
+
         public void Remove(BrakeCaliber brakeCaliber) 
         {
-            //TO DO Når en caliber bliver fjernet, skal Feedback også fjernes :)
             brakeCalibers.Remove(brakeCaliber);
-            // Delete existing owner in database
-            using (SqlConnection connection = new(P1DB08ConnectionPath))
+            using (SqlConnection connection = new(CnnStr))
             {
                 connection.Open();
                 string table = "BRAKECALIBER";
