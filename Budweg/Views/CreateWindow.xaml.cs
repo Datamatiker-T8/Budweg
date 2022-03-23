@@ -20,7 +20,7 @@ namespace Budweg.Views
     /// </summary>
     public partial class CreateWindow : Window
     {
-        CreateBrakeCaliberViewModel vm;
+        BrakeCaliberViewModel vm;
         public CreateWindow()
         {
             vm = new();

@@ -23,18 +23,18 @@ namespace Budweg
     /// </summary>
     public partial class KundeSupport : Page
     {
-        CustomerSupportViewModel csvm = new CustomerSupportViewModel();
+        BrakeCaliberViewModel bcvm = new BrakeCaliberViewModel();
 
         public KundeSupport()
         {
             InitializeComponent();
             FillComboBox();
-            DataContext = csvm;
+            DataContext = bcvm;
         }
 
         private void FillComboBox()
         {
-            myComboBox.ItemsSource = csvm.BrakeList;
+            myComboBox.ItemsSource = bcvm.brakeCaliberList;
             myComboBox.DisplayMemberPath = "BudwegNo";
         }
 
