@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using QRCoder;
+using QRCoder.Xaml;
 
 namespace Budweg.ViewModels
 {
@@ -57,30 +59,29 @@ namespace Budweg.ViewModels
                 brakeCaliberList.Add(brake);
             }
 
-            selectedBrake = brakeCaliberList[0];
+            //selectedBrake = brakeCaliberList[0];
         }
 
-    // ======================================================
-    // CRUD: Create
-    // ======================================================
+        // ======================================================
+        // CRUD: Create
+        // ======================================================
 
-        public void AddBrakeCaliber(int brakeCaliberId, string caliberName, string budwegNo, bool stockStatus, string brakeSystem, string linkQRCode)
+        public void AddBrakeCaliber(int brakeCaliberId, string caliberName, string budwegNo, bool stockStatus, string brakeSystem, string linkQRCode, byte[] qR_Bytes)
         {
-            BrakeCaliber brakeCaliber = new(brakeCaliberId, caliberName, budwegNo, stockStatus, brakeSystem, linkQRCode);
+            BrakeCaliber brakeCaliber = new(brakeCaliberId, caliberName, budwegNo, stockStatus, brakeSystem, linkQRCode, qR_Bytes);
+            int addedCaliber = brakeRepo.Add(brakeCaliber);
+            brakeCaliberList.Add(brakeRepo.GetById(addedCaliber));
+        }
+        public void AddBrakeCaliber(string caliberName, string budwegNo, bool stockStatus, string brakeSystem, string linkQRCode, byte[] qR_Bytes)
+        {
+            BrakeCaliber brakeCaliber = new(caliberName, budwegNo, stockStatus, brakeSystem, linkQRCode, qR_Bytes);
             int addedCaliber = brakeRepo.Add(brakeCaliber);
             brakeCaliberList.Add(brakeRepo.GetById(addedCaliber));
         }
 
-        public void AddBrakeCaliber(string caliberName, string budwegNo, bool stockStatus, string brakeSystem, string linkQRCode)
-        {
-            BrakeCaliber brakeCaliber = new(caliberName, budwegNo, stockStatus, brakeSystem, linkQRCode);
-            int addedCaliber = brakeRepo.Add(brakeCaliber);
-            brakeCaliberList.Add(brakeRepo.GetById(addedCaliber));
-        }
-
-    // ======================================================
-    // CRUD: Read
-    // ======================================================
+        // ======================================================
+        // CRUD: Read
+        // ======================================================
 
         public BrakeCaliber GetBrakeCaliber(int id)
         {
@@ -130,6 +131,41 @@ namespace Budweg.ViewModels
                     brakeRepo.Remove(brake);
                 }
             }
+        }
+
+        // ======================================================
+        // Generation of QR-Code
+        // ======================================================
+
+        public byte[] QRCodeToBytes(string link)
+        {
+            byte[] pic = BrakeCaliber.GenerateQRCode(link);
+            
+            return pic;
+        }
+
+        public System.Windows.Media.DrawingImage QRCodeFromBytes(int id)
+        {
+            System.Windows.Media.DrawingImage qrCodeAsXaml = null;
+
+            foreach (BrakeCaliber brake in brakeCaliberList)
+            {
+                if (brake.BrakeCaliberId == id)
+                {
+                    QRCodeData qrCodeData = new QRCodeData(brake.QR_Bytes, QRCodeData.Compression.Uncompressed); // de-compresser.
+                    XamlQRCode qrCode = new XamlQRCode(qrCodeData);
+                    qrCodeAsXaml = qrCode.GetGraphic(20); // draws img
+                }
+            }
+
+            //if (brakeCaliberList[id].QR_Bytes != null)
+            //{
+            //    QRCodeData qrCodeData = new QRCodeData(brakeCaliberList[id].QR_Bytes, QRCodeData.Compression.Uncompressed); // de-compresser.
+            //    XamlQRCode qrCode = new XamlQRCode(qrCodeData);
+            //    qrCodeAsXaml = qrCode.GetGraphic(20); // draws img
+            //}
+
+            return qrCodeAsXaml;
         }
     }
 }

@@ -25,6 +25,7 @@ namespace Budweg.Persistence
 
         public BrakecaliberRepository()
         {
+            byte[] QR_Code = null;
             brakeCalibers = new();
             using (SqlConnection connection = new(CnnStr))
             {
@@ -44,9 +45,18 @@ namespace Budweg.Persistence
                         string brakeSystem = sqldatareader["BrakeSystem"].ToString();
                         string linkQRCode = sqldatareader["LinkQRCode"].ToString();
 
+                        //##########
+                        //new
+                        if (!Convert.IsDBNull(sqldatareader["QR_Code"]))//crash if null
+                        {
+                            QR_Code = (byte[])sqldatareader["QR_Code"];
+                        }
+
+
+                        // result = (someBool) ? if true : if false
                         BrakeCaliber bc = (brakeCaliberID != -1)
-                            ? new(brakeCaliberID, caliberName, budwegNo, stockStatus, brakeSystem, linkQRCode)
-                            : new(caliberName, budwegNo, stockStatus, brakeSystem, linkQRCode);
+                            ? new(brakeCaliberID, caliberName, budwegNo, stockStatus, brakeSystem, linkQRCode, QR_Code)
+                            : new(caliberName, budwegNo, stockStatus, brakeSystem, linkQRCode, QR_Code);
                         brakeCalibers.Add(bc);
                     }
                 }
@@ -68,25 +78,27 @@ namespace Budweg.Persistence
                 bool stockStatus = brakeCaliber.StockStatus;
                 string linkQRCode = brakeCaliber.LinkQRCode;
                 string brakeSystem = brakeCaliber.BrakeSystem;
+                byte[] qR_Bytes = brakeCaliber.QR_Bytes;
 
                 string table = "BRAKECALIBER";
-                string coloumns = "BRAKECALIBER.CaliberName, BRAKECALIBER.BudwegNo, BRAKECALIBER.StockStatus, BRAKECALIBER.BrakeSystem, BRAKECALIBER.LinkQRCode";
-                string values = "@caliberName, @BudwegNo, @stockStatus, @brakeSystem, @linkQRCode";
+                string coloumns = "BRAKECALIBER.CaliberName, BRAKECALIBER.BudwegNo, BRAKECALIBER.StockStatus, BRAKECALIBER.BrakeSystem, BRAKECALIBER.LinkQRCode, BRAKECALIBER.QR_Code";
+                string values = "@caliberName, @BudwegNo, @stockStatus, @brakeSystem, @linkQRCode, @qR_Bytes";
                 string query =
                     $"INSERT INTO {table} ({coloumns})" +
                     $"VALUES ({values})";
 
                 SqlCommand sqlCommand = new(query, connection);
-                
+
                 sqlCommand.Parameters.Add("@caliberName", SqlDbType.NVarChar).Value = brakeCaliber.CaliberName;
                 sqlCommand.Parameters.Add("@BudwegNo", SqlDbType.NVarChar).Value = brakeCaliber.BudwegNo;
                 sqlCommand.Parameters.Add("@stockStatus", SqlDbType.Bit).Value = brakeCaliber.StockStatus;
                 sqlCommand.Parameters.Add("@brakeSystem", SqlDbType.NVarChar).Value = brakeCaliber.BrakeSystem;
                 sqlCommand.Parameters.Add("@linkQRCode", SqlDbType.NVarChar).Value = brakeCaliber.LinkQRCode;
+                sqlCommand.Parameters.Add("@qR_Bytes", SqlDbType.VarBinary).Value = brakeCaliber.QR_Bytes;
 
                 sqlCommand.ExecuteNonQuery();
             }
-            return result; 
+            return result;
         }
 
     // ======================================================
@@ -96,33 +108,7 @@ namespace Budweg.Persistence
         // Get all from database
         public List<BrakeCaliber> GetAll() 
         {
-            List<BrakeCaliber> brakeList = new List<BrakeCaliber>();
-            DataSet ds = new DataSet();
-            using (SqlConnection connection = new SqlConnection(CnnStr))
-            {
-                SqlDataAdapter dataAdapter = new SqlDataAdapter();
-                dataAdapter.SelectCommand = new SqlCommand("select * from [BRAKECALIBER]", connection);
-                dataAdapter.Fill(ds);
-            }
-
-            DataTable dt = new DataTable();
-            dt = ds.Tables[0];
-            for (int i = 0; i < dt.Rows.Count; i++)
-            {
-                DataRow dr = dt.NewRow();
-                dr = dt.Rows[i];
-                BrakeCaliber brakeCaliber = new BrakeCaliber();
-                brakeCaliber.BrakeCaliberId = (int)dr["BrakeCaliberId"];
-                brakeCaliber.CaliberName = dr["CaliberName"].ToString();
-                brakeCaliber.BudwegNo = dr["BudwegNo"].ToString();
-                brakeCaliber.StockStatus = bool.Parse(dr["StockStatus"].ToString());
-                brakeCaliber.BrakeSystem = dr["BrakeSystem"].ToString();
-                brakeCaliber.LinkQRCode = dr["LinkQRCode"].ToString();
-
-                brakeList.Add(brakeCaliber);
-            }
-
-            return brakeList;
+            return brakeCalibers;
         }
 
         // Get one entity from database by id
