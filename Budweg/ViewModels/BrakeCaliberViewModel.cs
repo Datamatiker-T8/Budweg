@@ -10,42 +10,42 @@ using QRCoder.Xaml;
 
 namespace Budweg.ViewModels
 {
-    public class BrakeCaliberViewModel : INotifyPropertyChanged
+    public class BrakeCaliberViewModel
     {
 
-    // ======================================================
-    // Fields & Props
-    // ======================================================
+        // ======================================================
+        // Fields & Props
+        // ======================================================
 
         BrakecaliberRepository brakeRepo = new BrakecaliberRepository();
 
         // This code:
         
-        public List<BrakeCaliber> brakeCaliberList = new List<BrakeCaliber>();
+        //public List<BrakeCaliber> brakeCaliberList = new List<BrakeCaliber>();
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        //public event PropertyChangedEventHandler PropertyChanged;
 
-        private void NotifyPropertyChanged([CallerMemberName] string name = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-        }
+        //private void NotifyPropertyChanged([CallerMemberName] string name = "")
+        //{
+        //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        //}
 
-        private string name;
-        public string Name
-        {
-            get { return name; }
-            set { name = value; NotifyPropertyChanged("Name"); }
-        }
+        //private string name;
+        //public string Name
+        //{
+        //    get { return name; }
+        //    set { name = value; NotifyPropertyChanged("Name"); }
+        //}
 
-        private BrakeCaliber selectedBrake;
-        public BrakeCaliber SelectedBrake
-        {
-            get { return selectedBrake; }
-            set { selectedBrake = value; NotifyPropertyChanged("SelectedBrake"); Name = SelectedBrake.CaliberName; }
-        }
+        //private BrakeCaliber selectedBrake;
+        //public BrakeCaliber SelectedBrake
+        //{
+        //    get { return selectedBrake; }
+        //    set { selectedBrake = value; NotifyPropertyChanged("SelectedBrake"); Name = SelectedBrake.CaliberName; }
+        //}
 
         // Can be:
-        // public ObservableCollection<BrakeCaliber> BrakeCalibers = new ObservableCollection<BrakeCaliber>();
+        public ObservableCollection<BrakeCaliber> brakeCaliberList = new ObservableCollection<BrakeCaliber>();
         
 
     // ======================================================
@@ -96,7 +96,7 @@ namespace Budweg.ViewModels
             return brakeCaliberResult;
         }
 
-        public List<BrakeCaliber> GetAll()
+        public ObservableCollection<BrakeCaliber> GetAll()
         {
             return brakeCaliberList;
         }
@@ -147,25 +147,17 @@ namespace Budweg.ViewModels
         public System.Windows.Media.DrawingImage QRCodeFromBytes(int id)
         {
             System.Windows.Media.DrawingImage qrCodeAsXaml = null;
-
-            foreach (BrakeCaliber brake in brakeCaliberList)
+            id = id - 1;
+            if (brakeCaliberList[id].QR_Bytes != null)
             {
-                if (brake.BrakeCaliberId == id)
-                {
-                    QRCodeData qrCodeData = new QRCodeData(brake.QR_Bytes, QRCodeData.Compression.Uncompressed); // de-compresser.
-                    XamlQRCode qrCode = new XamlQRCode(qrCodeData);
-                    qrCodeAsXaml = qrCode.GetGraphic(20); // draws img
-                }
+                QRCodeData qrCodeData = new QRCodeData(brakeCaliberList[id].QR_Bytes, QRCodeData.Compression.Uncompressed); // de-compresser.
+                XamlQRCode qrCode = new XamlQRCode(qrCodeData);
+                //QRCode qrCode = new QRCode(qrCodeData); // create qr-code from the data, all in memory
+                qrCodeAsXaml = qrCode.GetGraphic(20); // draws img
             }
-
-            //if (brakeCaliberList[id].QR_Bytes != null)
-            //{
-            //    QRCodeData qrCodeData = new QRCodeData(brakeCaliberList[id].QR_Bytes, QRCodeData.Compression.Uncompressed); // de-compresser.
-            //    XamlQRCode qrCode = new XamlQRCode(qrCodeData);
-            //    qrCodeAsXaml = qrCode.GetGraphic(20); // draws img
-            //}
 
             return qrCodeAsXaml;
         }
+
     }
 }
