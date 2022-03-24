@@ -158,7 +158,9 @@ namespace Budweg.Persistence
             {
                 connection.Open();
                 string table = "BRAKECALIBER";
-                string query = $"DELETE FROM {table} WHERE {brakeCaliber.BrakeCaliberId} = @BrakeCaliberID";
+                string query = $"DELETE FROM {table} WHERE {brakeCaliber.BrakeCaliberId} = BrakeCaliberID";
+                SqlCommand sqlCommand = new(query, connection);
+                sqlCommand.ExecuteNonQuery();
             }
         }
     }

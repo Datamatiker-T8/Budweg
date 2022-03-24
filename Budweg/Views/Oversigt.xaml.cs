@@ -1,4 +1,6 @@
-﻿using Budweg.Views;
+﻿using Budweg.Domain;
+using Budweg.ViewModels;
+using Budweg.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +23,13 @@ namespace Budweg
     /// </summary>
     public partial class Oversigt : Page
     {
+
+        BrakeCaliberViewModel bcvm = new BrakeCaliberViewModel();
+
         public Oversigt()
         {
             InitializeComponent();
+            DataContext = bcvm;
         }
 
         private void OverViewList_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -35,6 +41,14 @@ namespace Budweg
         {
             CreateWindow OC = new();
             OC.Show();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            BrakeCaliber value = (BrakeCaliber)Datagrid.SelectedValue;
+            int breakid = value.BrakeCaliberId;
+
+            bcvm.DeleteBrakeCaliber(breakid);
         }
     }
 }

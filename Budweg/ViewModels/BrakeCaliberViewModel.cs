@@ -21,31 +21,31 @@ namespace Budweg.ViewModels
 
         // This code:
 
-        public List<BrakeCaliber> brakeCaliberList = new List<BrakeCaliber>();
+        //public List<BrakeCaliber> brakeCaliberList = new List<BrakeCaliber>();
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        //public event PropertyChangedEventHandler PropertyChanged;
 
-        private void NotifyPropertyChanged([CallerMemberName] string name = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-        }
+        //private void NotifyPropertyChanged([CallerMemberName] string name = "")
+        //{
+        //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        //}
 
-        private string name;
-        public string Name
-        {
-            get { return name; }
-            set { name = value; NotifyPropertyChanged("Name"); }
-        }
+        //private string name;
+        //public string Name
+        //{
+        //    get { return name; }
+        //    set { name = value; NotifyPropertyChanged("Name"); }
+        //}
 
-        private BrakeCaliber selectedBrake;
-        public BrakeCaliber SelectedBrake
-        {
-            get { return selectedBrake; }
-            set { selectedBrake = value; NotifyPropertyChanged("SelectedBrake"); Name = SelectedBrake.CaliberName; }
-        }
+        //private BrakeCaliber selectedBrake;
+        //public BrakeCaliber SelectedBrake
+        //{
+        //    get { return selectedBrake; }
+        //    set { selectedBrake = value; NotifyPropertyChanged("SelectedBrake"); Name = SelectedBrake.CaliberName; }
+        //}
 
         // Can be:
-        //public ObservableCollection<BrakeCaliber> brakeCaliberList = new ObservableCollection<BrakeCaliber>();
+        public ObservableCollection<BrakeCaliber> brakeCaliberVM { get; set; } = new ObservableCollection<BrakeCaliber>();
 
 
         // ======================================================
@@ -56,7 +56,7 @@ namespace Budweg.ViewModels
         {
             foreach (BrakeCaliber brake in brakeRepo.GetAll())
             {
-                brakeCaliberList.Add(brake);
+                brakeCaliberVM.Add(brake);
             }
 
             //selectedBrake = brakeCaliberList[0];
@@ -70,13 +70,13 @@ namespace Budweg.ViewModels
         {
             BrakeCaliber brakeCaliber = new(brakeCaliberId, caliberName, budwegNo, stockStatus, brakeSystem, linkQRCode, qR_Bytes);
             int addedCaliber = brakeRepo.Add(brakeCaliber);
-            brakeCaliberList.Add(brakeRepo.GetById(addedCaliber));
+            brakeCaliberVM.Add(brakeRepo.GetById(addedCaliber));
         }
         public void AddBrakeCaliber(string caliberName, string budwegNo, bool stockStatus, string brakeSystem, string linkQRCode, byte[] qR_Bytes)
         {
             BrakeCaliber brakeCaliber = new(caliberName, budwegNo, stockStatus, brakeSystem, linkQRCode, qR_Bytes);
             int addedCaliber = brakeRepo.Add(brakeCaliber);
-            brakeCaliberList.Add(brakeRepo.GetById(addedCaliber));
+            brakeCaliberVM.Add(brakeRepo.GetById(addedCaliber));
         }
 
         // ======================================================
@@ -86,7 +86,7 @@ namespace Budweg.ViewModels
         public BrakeCaliber GetBrakeCaliber(int id)
         {
             BrakeCaliber brakeCaliberResult = null;
-            foreach (BrakeCaliber brake in brakeCaliberList)
+            foreach (BrakeCaliber brake in brakeCaliberVM)
             {
                 if (id == brake.BrakeCaliberId)
                 {
@@ -96,9 +96,9 @@ namespace Budweg.ViewModels
             return brakeCaliberResult;
         }
 
-        public List<BrakeCaliber> GetAll()
+        public ObservableCollection<BrakeCaliber> GetAll()
         {
-            return brakeCaliberList;
+            return brakeCaliberVM;
         }
 
     // ======================================================
@@ -107,7 +107,7 @@ namespace Budweg.ViewModels
 
         public void UpdateBrakeCaliber(int id, string modelNumber, string linkQRCode)
         {
-            foreach (BrakeCaliber brake in brakeCaliberList)
+            foreach (BrakeCaliber brake in brakeCaliberVM)
             {
                 if (id == brake.BrakeCaliberId)
                 {
@@ -123,14 +123,25 @@ namespace Budweg.ViewModels
 
         public void DeleteBrakeCaliber(int id)
         {
-            foreach (BrakeCaliber brake in brakeCaliberList)
+
+            for (int i = 0; i < brakeCaliberVM.Count; i++)
             {
-                if (id == brake.BrakeCaliberId)
+                if (id == brakeCaliberVM[i].BrakeCaliberId)
                 {
-                    brakeCaliberList.Remove(brake);
+                    BrakeCaliber brake = brakeCaliberVM[i];
+                    brakeCaliberVM.Remove(brakeCaliberVM[i]);
                     brakeRepo.Remove(brake);
                 }
             }
+
+            //foreach (BrakeCaliber brake in brakeCaliberVM)
+            //{
+            //    if (id == brake.BrakeCaliberId)
+            //    {
+            //        brakeCaliberVM.Remove(brake);
+            //        brakeRepo.Remove(brake);
+            //    }
+            //}
         }
 
         // ======================================================
@@ -148,9 +159,9 @@ namespace Budweg.ViewModels
         {
             System.Windows.Media.DrawingImage qrCodeAsXaml = null;
             id = id - 1;
-            if (brakeCaliberList[id].QR_Bytes != null)
+            if (brakeCaliberVM[id].QR_Bytes != null)
             {
-                QRCodeData qrCodeData = new QRCodeData(brakeCaliberList[id].QR_Bytes, QRCodeData.Compression.Uncompressed); // de-compresser.
+                QRCodeData qrCodeData = new QRCodeData(brakeCaliberVM[id].QR_Bytes, QRCodeData.Compression.Uncompressed); // de-compresser.
                 XamlQRCode qrCode = new XamlQRCode(qrCodeData);
                 //QRCode qrCode = new QRCode(qrCodeData); // create qr-code from the data, all in memory
                 qrCodeAsXaml = qrCode.GetGraphic(20); // draws img
