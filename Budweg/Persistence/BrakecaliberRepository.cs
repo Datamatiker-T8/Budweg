@@ -11,12 +11,23 @@ namespace Budweg.Persistence
 {
     public class BrakecaliberRepository
     {
+
+    // ======================================================
+    // Fields & Props
+    // ======================================================
+
         private List<BrakeCaliber> brakeCalibers;
-        private string P1DB08ConnectionPath = "Server=10.56.8.36;Database=P1DB08; User Id=P1-08;Password=OPENDB_08;";
-        public BrakecaliberRepository() // create
+        private string CnnStr = Properties.Settings.Default.WPF_Connection;
+
+    // ======================================================
+    // Constructor: Adding every BrakeCaliber entity from database to "brakeCalibers" list.
+    // ======================================================
+
+        public BrakecaliberRepository()
         {
+            byte[] QR_Code = null;
             brakeCalibers = new();
-            using (SqlConnection connection = new(P1DB08ConnectionPath))
+            using (SqlConnection connection = new(CnnStr))
             {
                 connection.Open();
                 string table = "BRAKECALIBER";
@@ -34,19 +45,31 @@ namespace Budweg.Persistence
                         string brakeSystem = sqldatareader["BrakeSystem"].ToString();
                         string linkQRCode = sqldatareader["LinkQRCode"].ToString();
 
+                        //##########
+                        //new
+                        if (!Convert.IsDBNull(sqldatareader["QR_Code"]))//crash if null
+                        {
+                            QR_Code = (byte[])sqldatareader["QR_Code"];
+                        }
+
+
                         // result = (someBool) ? if true : if false
                         BrakeCaliber bc = (brakeCaliberID != -1)
-                            ? new(brakeCaliberID, caliberName, budwegNo, stockStatus, brakeSystem, linkQRCode)
-                            : new(caliberName, budwegNo, stockStatus, brakeSystem, linkQRCode);
+                            ? new(brakeCaliberID, caliberName, budwegNo, stockStatus, brakeSystem, linkQRCode, QR_Code)
+                            : new(caliberName, budwegNo, stockStatus, brakeSystem, linkQRCode, QR_Code);
                         brakeCalibers.Add(bc);
                     }
                 }
             }
         }
+
+    // ======================================================
+    // Repository CRUD: Create (Adding entity to database)
+    // ======================================================
         public int Add(BrakeCaliber brakeCaliber) 
         {
             int result = -1;
-            using (SqlConnection connection = new(P1DB08ConnectionPath))
+            using (SqlConnection connection = new(CnnStr))
             {
                 connection.Open();
                 result = brakeCaliber.BrakeCaliberId;
@@ -55,30 +78,40 @@ namespace Budweg.Persistence
                 bool stockStatus = brakeCaliber.StockStatus;
                 string linkQRCode = brakeCaliber.LinkQRCode;
                 string brakeSystem = brakeCaliber.BrakeSystem;
+                byte[] qR_Bytes = brakeCaliber.QR_Bytes;
 
                 string table = "BRAKECALIBER";
-                string coloumns = "BRAKECALIBER.CaliberName, BRAKECALIBER.BudwegNo, BRAKECALIBER.StockStatus, BRAKECALIBER.BrakeSystem, BRAKECALIBER.LinkQRCode";
-                string values = "@caliberName, @BudwegNo, @stockStatus, @brakeSystem, @linkQRCode";
+                string coloumns = "BRAKECALIBER.CaliberName, BRAKECALIBER.BudwegNo, BRAKECALIBER.StockStatus, BRAKECALIBER.BrakeSystem, BRAKECALIBER.LinkQRCode, BRAKECALIBER.QR_Code";
+                string values = "@caliberName, @BudwegNo, @stockStatus, @brakeSystem, @linkQRCode, @qR_Bytes";
                 string query =
                     $"INSERT INTO {table} ({coloumns})" +
                     $"VALUES ({values})";
 
                 SqlCommand sqlCommand = new(query, connection);
-                
+
                 sqlCommand.Parameters.Add("@caliberName", SqlDbType.NVarChar).Value = brakeCaliber.CaliberName;
                 sqlCommand.Parameters.Add("@BudwegNo", SqlDbType.NVarChar).Value = brakeCaliber.BudwegNo;
                 sqlCommand.Parameters.Add("@stockStatus", SqlDbType.Bit).Value = brakeCaliber.StockStatus;
                 sqlCommand.Parameters.Add("@brakeSystem", SqlDbType.NVarChar).Value = brakeCaliber.BrakeSystem;
                 sqlCommand.Parameters.Add("@linkQRCode", SqlDbType.NVarChar).Value = brakeCaliber.LinkQRCode;
+                sqlCommand.Parameters.Add("@qR_Bytes", SqlDbType.VarBinary).Value = brakeCaliber.QR_Bytes;
 
                 sqlCommand.ExecuteNonQuery();
             }
-            return result; 
+            return result;
         }
+
+    // ======================================================
+    // Repository CRUD: Read (Reading entity from database)
+    // ======================================================
+
+        // Get all from database
         public List<BrakeCaliber> GetAll() 
-        { 
-            return brakeCalibers; 
+        {
+            return brakeCalibers;
         }
+
+        // Get one entity from database by id
         public BrakeCaliber GetById(int id) 
         {
             BrakeCaliber result = null;
@@ -91,9 +124,14 @@ namespace Budweg.Persistence
             }
             return result;
         }
+
+    // ======================================================
+    // Repository CRUD: Update (Updating existing entity in database)
+    // ======================================================
+
         public void Update(BrakeCaliber brakeCaliber)
         {
-            using (SqlConnection connection = new(P1DB08ConnectionPath))
+            using (SqlConnection connection = new(CnnStr))
             {
                 connection.Open();
                 int id = brakeCaliber.BrakeCaliberId;
@@ -108,12 +146,15 @@ namespace Budweg.Persistence
                     $"WHERE BrakeCaliberId = {id}";
             }
         }
+
+    // ======================================================
+    // Repository CRUD: Delete (Delete existing entity from database)
+    // ======================================================
+
         public void Remove(BrakeCaliber brakeCaliber) 
         {
-            //TO DO Når en caliber bliver fjernet, skal Feedback også fjernes :)
             brakeCalibers.Remove(brakeCaliber);
-            // Delete existing owner in database
-            using (SqlConnection connection = new(P1DB08ConnectionPath))
+            using (SqlConnection connection = new(CnnStr))
             {
                 connection.Open();
                 string table = "BRAKECALIBER";

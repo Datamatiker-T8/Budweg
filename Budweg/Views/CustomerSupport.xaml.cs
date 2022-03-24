@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -14,37 +16,73 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Budweg.Domain;
+using Budweg.ViewModels;
 
 namespace Budweg
 {
     /// <summary>
     /// Interaction logic for KundeSupport.xaml
     /// </summary>
-    public partial class KundeSupport : Page
+    public partial class KundeSupport : Page, INotifyPropertyChanged
     {
+        BrakeCaliberViewModel bcvm = new BrakeCaliberViewModel();
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void NotifyPropertyChanged(string path)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(path));
+        }
+
+        private DrawingImage imageAsObject;
+        public DrawingImage ImageAsObject
+        {
+            set
+            {
+                imageAsObject = value;
+                NotifyPropertyChanged(nameof(ImageAsObject));
+            }
+            get { return imageAsObject; }
+        }
+
         public KundeSupport()
         {
             InitializeComponent();
             FillComboBox();
+            DataContext = this;
+            QRcodeImage();
         }
 
         private void FillComboBox()
         {
-            string conString = "Server=10.56.8.36;Database=P1DB08;User Id=P1-08;Password=OPENDB_08;";
-
-            using (SqlConnection con = new SqlConnection(conString))
+            myComboBox.ItemsSource = bcvm.brakeCaliberList;
+            myComboBox.DisplayMemberPath = "BudwegNo";
+        }
+        public System.Windows.Media.DrawingImage QRcodeImage()
+        {
+            if (myComboBox.SelectedValue != null)
             {
-                SqlCommand cmd = new SqlCommand();
-                cmd.CommandText = "select * from [BRAKECALIBER]";
-                cmd.Connection = con;
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                DataTable dt = new DataTable("BRAKECALIBER");
-                da.Fill(dt);
+                BrakeCaliber value = (BrakeCaliber)myComboBox.SelectedValue;
+                int Breakid = value.BrakeCaliberId;
 
-                myComboBox.ItemsSource = dt.DefaultView;
-                myComboBox.DisplayMemberPath = "BudwegNo";
+                for (int i = 0; i < bcvm.brakeCaliberList.Count; i++)
+                {
+                    if (bcvm.brakeCaliberList[i].BrakeCaliberId == Breakid)
+                    {
+                        int id = bcvm.brakeCaliberList[i].BrakeCaliberId;
+                        return bcvm.QRCodeFromBytes(id);
+                    }
+                }
             }
+            return null;
 
+        }
+
+        private void myComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DrawingImage myImage = new DrawingImage();
+            ImageAsObject = QRcodeImage();
         }
 
     }

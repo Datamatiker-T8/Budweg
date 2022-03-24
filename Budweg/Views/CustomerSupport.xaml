@@ -20,7 +20,7 @@
 
         <Grid Grid.Column="2">
             <TextBox HorizontalAlignment="Left" Margin="16,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="308" Height="44" Style="{StaticResource ModernTextbox}" BorderBrush="#FFB1B4BB" Foreground="Black" Background="Black" FontFamily="Arial"/>
-            <ComboBox x:Name="myComboBox" HorizontalAlignment="Right" Margin="0,10,220,0" VerticalAlignment="Top" Width="140" Height="44" FontSize="18"/>
+            <ComboBox x:Name="myComboBox" HorizontalAlignment="Right" Margin="0,10,220,0" VerticalAlignment="Top" Width="140" Height="44" FontSize="18" SelectionChanged="myComboBox_SelectionChanged"/>
         </Grid>
         <Border CornerRadius="10" HorizontalAlignment="Left" Height="57" VerticalAlignment="Top" Width="873" Opacity="0.225" Background="#FF949292" Grid.Column="1" Margin="40,284,0,0" Grid.Row="1"/>
         <Border CornerRadius="10" HorizontalAlignment="Left" Height="57" VerticalAlignment="Top" Width="872" Opacity="0.225" Background="#FF949292" Grid.Column="1" Margin="41,465,0,0" Grid.Row="1"/>
@@ -32,19 +32,20 @@
         <Button x:Name="MonteringsguideBt" Content="Monteringsguide" HorizontalAlignment="Left" Margin="41,389,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF47A200" FontFamily="Arial" FontSize="20" BorderBrush="{x:Null}" Height="26" FontStyle="Italic" Width="155" Grid.Column="1" Grid.Row="1"/>
         <Label Content="Video" HorizontalAlignment="Left" Margin="191,387,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="7" Background="{x:Null}" Foreground="White" Opacity="0.47" Width="28" Grid.Column="1" Grid.Row="1" Height="18"/>
         <Button x:Name="GarantibevisBt" Content="Garantibevis" HorizontalAlignment="Left" Margin="43,480,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF47A200" FontFamily="Arial" FontSize="20" BorderBrush="{x:Null}" Height="23" FontStyle="Italic" Width="124" Grid.Column="1" Grid.Row="1"/>
-        <Image x:Name="QR_Image" HorizontalAlignment="Left" Height="170" Margin="756,14,0,0" VerticalAlignment="Top" Width="171" Source="/Views/Image/Opera Snapshot_2022-03-03_105230_drive.google.com.png" Grid.Column="1" Grid.Row="1"/>
+        <Image x:Name="MyImage" HorizontalAlignment="Left" Height="170" Margin="756,21,0,0" VerticalAlignment="Top" Width="163" Source="{Binding ImageAsObject}" Grid.Column="1" Grid.Row="1"/>
         <Image x:Name="KalibreImage" Grid.Column="1" HorizontalAlignment="Left" Height="176" Margin="7,10,0,0" VerticalAlignment="Top" Width="164" Grid.Row="1"/>
         <Grid Grid.Column="1" HorizontalAlignment="Left" Height="184" Margin="178,8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="545">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="417*"/>
+                <ColumnDefinition Width="196*"/>
+                <ColumnDefinition Width="221*"/>
                 <ColumnDefinition Width="128*"/>
             </Grid.ColumnDefinitions>
-            <Border CornerRadius="10" HorizontalAlignment="Left" Height="182" VerticalAlignment="Center" Width="544" Opacity="0.225" Background="#FF949292" Grid.ColumnSpan="2"/>
+            <Border CornerRadius="10" HorizontalAlignment="Left" Height="182" VerticalAlignment="Center" Width="544" Opacity="0.225" Background="#FF949292" Grid.ColumnSpan="3"/>
             <Label Content="Artikel status:" HorizontalAlignment="Left" Margin="16,62,0,0" VerticalAlignment="Top" Background="{x:Null}" FontWeight="Bold" Height="40" Width="146" FontSize="18"/>
             <Label Content="Bremsesystem:" HorizontalAlignment="Left" Margin="16,97,0,0" VerticalAlignment="Top" Background="{x:Null}" FontWeight="Bold" Height="41" Width="156" FontSize="18"/>
             <Label Content="Budweg No:" HorizontalAlignment="Left" Margin="16,131,0,0" VerticalAlignment="Top" Background="{x:Null}" FontWeight="Bold" Height="40" Width="119" FontSize="18"/>
-            <TextBlock x:Name="ArtikelStatus" Text="{Binding ElementName=myComboBox, Path=SelectedItem.StockStatus}" HorizontalAlignment="Left" Margin="148,67,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="86" FontSize="18"/>
-            <TextBlock x:Name="BremseSystem" Text="{Binding ElementName=myComboBox, Path=SelectedItem.BrakeSystem}" HorizontalAlignment="Left" Margin="156,102,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="89" RenderTransformOrigin="0.5,0.5" FontSize="18">
+            <TextBlock x:Name="ArtikelStatus" Text="{Binding ElementName=myComboBox, Path=SelectedItem.StockStatus}" HorizontalAlignment="Left" Margin="148,67,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="86" FontSize="18" Grid.ColumnSpan="2"/>
+            <TextBlock x:Name="BremseSystem" Text="{Binding ElementName=myComboBox, Path=SelectedItem.BrakeSystem}" HorizontalAlignment="Left" Margin="156,102,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="89" RenderTransformOrigin="0.5,0.5" FontSize="18" Grid.ColumnSpan="2">
                 <TextBlock.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -54,8 +55,8 @@
                     </TransformGroup>
                 </TextBlock.RenderTransform>
             </TextBlock>
-            <TextBlock x:Name="BudwegNo" Text="{Binding ElementName=myComboBox, Path=SelectedItem.BudwegNo}" HorizontalAlignment="Left" Margin="132,136,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="93" FontSize="18"/>
-            <TextBlock x:Name="BremsekalibreTitel" Text="{Binding ElementName=myComboBox, Path=SelectedItem.CaliberName}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="22" FontFamily="Arial" Height="50" Width="523" Margin="22,6,0,0" Grid.ColumnSpan="2"/>
+            <TextBlock x:Name="BudwegNo" Text="{Binding ElementName=myComboBox, Path=SelectedItem.BudwegNo}" HorizontalAlignment="Left" Margin="132,136,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="93" FontSize="18" Grid.ColumnSpan="2"/>
+            <TextBlock x:Name="BremsekalibreTitel" Text="{Binding ElementName=myComboBox, Path=SelectedItem.CaliberName}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="22" FontFamily="Arial" Height="50" Width="523" Margin="22,6,0,0" Grid.ColumnSpan="3"/>
         </Grid>
         <Grid Height="40" Background="Transparent" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="854,474,0,0" Grid.Column="1" Grid.Row="1" Width="45">
             <Button Background="Transparent" BorderBrush="Transparent" FontFamily="Arial Black" Foreground="White" FontSize="14" HorizontalAlignment="Center" Width="39" Margin="0,0,0,1">
