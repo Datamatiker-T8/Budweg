@@ -41,7 +41,7 @@ namespace Budweg.Persistence
                         int brakeCaliberID = int.Parse(sqldatareader["BrakeCaliberID"].ToString());
                         string caliberName = sqldatareader["CaliberName"].ToString();
                         string budwegNo = sqldatareader["BudwegNo"].ToString();
-                        bool stockStatus = sqldatareader["StockStatus"].ToString() == "1";
+                        bool stockStatus = bool.Parse(sqldatareader["StockStatus"].ToString());
                         string brakeSystem = sqldatareader["BrakeSystem"].ToString();
                         string linkQRCode = sqldatareader["LinkQRCode"].ToString();
 

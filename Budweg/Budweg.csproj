@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <None Remove="Views\Close_40px.png" />
+    <None Remove="Views\logo-uden-smil_positiv.png" />
     <None Remove="Views\upload_40px.png" />
   </ItemGroup>
 
@@ -25,6 +26,7 @@
     <Resource Include="Views\Image\overview_40px.png" />
     <Resource Include="Views\Image\upload_40px.png" />
     <Resource Include="Views\Image\user_manual_40px.png" />
+    <Resource Include="Views\logo-uden-smil_positiv.png" />
   </ItemGroup>
 
   <ItemGroup>

@@ -8,7 +8,7 @@
       d:DesignHeight="640" d:DesignWidth="1175"
       Title="KundeSupport">
 
-    <Grid>
+    <Grid Background="#FFCECECE">
         <Grid.RowDefinitions>
             <RowDefinition Height="49*"/>
             <RowDefinition Height="401*"/>

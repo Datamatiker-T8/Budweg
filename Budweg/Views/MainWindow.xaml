@@ -16,7 +16,6 @@
 
         <Grid Grid.ColumnSpan="2" Visibility="Visible">
             <Border Margin="252,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="338" Height="77" Visibility="Visible">
-                <TextBox Name="MainTextBox" HorizontalAlignment="Left" Margin="16,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="308" Height="44" Style="{StaticResource ModernTextbox}" BorderBrush="#FFB1B4BB" Foreground="Black" Background="Black" FontFamily="Arial"/>
             </Border>
         </Grid>
 
@@ -29,6 +28,7 @@
                 <RowDefinition Height="49*"/>
                 <RowDefinition Height="401*"/>
             </Grid.RowDefinitions>
+            <Image x:Name="logo" Width="430" VerticalAlignment="Top" Source="/Views/logo-uden-smil_positiv.png" Grid.Row="1" Margin="264,157,0,0" Height="186" HorizontalAlignment="Left" Grid.Column="1"/>
             <Grid Margin="0,0,2,-1" Grid.RowSpan="2">
                 <Border x:Name="sidePanel" Background="#049b4b" HorizontalAlignment="Left" Width="224" CornerRadius="0,12,12,0" BorderThickness="0,0,0,0" Margin="0,0,0,1">
                     <StackPanel HorizontalAlignment="Left" Width="220" Margin="0,4,0,0">

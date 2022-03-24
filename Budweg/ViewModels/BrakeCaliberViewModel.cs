@@ -158,13 +158,19 @@ namespace Budweg.ViewModels
         public System.Windows.Media.DrawingImage QRCodeFromBytes(int id)
         {
             System.Windows.Media.DrawingImage qrCodeAsXaml = null;
-            id = id - 1;
-            if (brakeCaliberVM[id].QR_Bytes != null)
+
+            foreach (BrakeCaliber brake in brakeCaliberVM)
             {
-                QRCodeData qrCodeData = new QRCodeData(brakeCaliberVM[id].QR_Bytes, QRCodeData.Compression.Uncompressed); // de-compresser.
-                XamlQRCode qrCode = new XamlQRCode(qrCodeData);
-                //QRCode qrCode = new QRCode(qrCodeData); // create qr-code from the data, all in memory
-                qrCodeAsXaml = qrCode.GetGraphic(20); // draws img
+                if (brake.BrakeCaliberId == id)
+                {
+                    if (brake.QR_Bytes != null)
+                    {
+                        QRCodeData qrCodeData = new QRCodeData(brake.QR_Bytes, QRCodeData.Compression.Uncompressed); // de-compresser.
+                        XamlQRCode qrCode = new XamlQRCode(qrCodeData);
+                        //QRCode qrCode = new QRCode(qrCodeData); // create qr-code from the data, all in memory
+                        qrCodeAsXaml = qrCode.GetGraphic(20); // draws img
+                    }
+                }
             }
 
             return qrCodeAsXaml;
