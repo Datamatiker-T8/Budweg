@@ -30,18 +30,21 @@ namespace Budweg
         {
             Oversigt os = new Oversigt();
             MainFrameWindow.Navigate(os);
+            logo.Visibility = Visibility.Hidden;
         }
 
         private void Infobt_Click(object sender, RoutedEventArgs e)
         {
             Information im = new Information();
             MainFrameWindow.Navigate(im);
+            logo.Visibility = Visibility.Hidden;
         }
 
         private void kundesupportbt_Click(object sender, RoutedEventArgs e)
         {
             KundeSupport kt = new KundeSupport();
             MainFrameWindow.Navigate(kt);
+            logo.Visibility = Visibility.Hidden;
         }
 
         private void Close_Click(object sender, RoutedEventArgs e)

@@ -56,7 +56,7 @@ namespace Budweg
 
         private void FillComboBox()
         {
-            myComboBox.ItemsSource = bcvm.brakeCaliberList;
+            myComboBox.ItemsSource = bcvm.brakeCaliberVM;
             myComboBox.DisplayMemberPath = "BudwegNo";
         }
         public System.Windows.Media.DrawingImage QRcodeImage()
@@ -66,11 +66,11 @@ namespace Budweg
                 BrakeCaliber value = (BrakeCaliber)myComboBox.SelectedValue;
                 int Breakid = value.BrakeCaliberId;
 
-                for (int i = 0; i < bcvm.brakeCaliberList.Count; i++)
+                for (int i = 0; i < bcvm.brakeCaliberVM.Count; i++)
                 {
-                    if (bcvm.brakeCaliberList[i].BrakeCaliberId == Breakid)
+                    if (bcvm.brakeCaliberVM[i].BrakeCaliberId == Breakid)
                     {
-                        int id = bcvm.brakeCaliberList[i].BrakeCaliberId;
+                        int id = bcvm.brakeCaliberVM[i].BrakeCaliberId;
                         return bcvm.QRCodeFromBytes(id);
                     }
                 }
