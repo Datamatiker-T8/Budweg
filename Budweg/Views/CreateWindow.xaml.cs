@@ -32,7 +32,7 @@ namespace Budweg.Views
             string budwegNo = BudwegNO.Text;
             string linkQRCode = QRLINK.Text;
             string caliberName = Name.Text;
-            bool stockStatus = StockStatus.IsEnabled;
+            bool stockStatus = (bool)StockStatus.IsChecked;
             string brakeSystem = BrakeSystem.Text;
             byte[] qR_Bytes = vm.QRCodeToBytes(linkQRCode);
             vm.AddBrakeCaliber(caliberName, budwegNo, stockStatus, brakeSystem, linkQRCode, qR_Bytes);
