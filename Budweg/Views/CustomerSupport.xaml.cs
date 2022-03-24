@@ -50,23 +50,15 @@ namespace Budweg
         {
             InitializeComponent();
             FillComboBox();
-            DataContext = bcvm;
+            DataContext = this;
             QRcodeImage();
         }
 
         private void FillComboBox()
         {
-
-            foreach (BrakeCaliber brake in bcvm.brakeCaliberList)
-            {
-                brakeCaliberList.Add(brake);
-            }
-
             myComboBox.ItemsSource = bcvm.brakeCaliberList;
             myComboBox.DisplayMemberPath = "BudwegNo";
         }
-
-        public ObservableCollection<BrakeCaliber> brakeCaliberList { get; set; } = new ObservableCollection<BrakeCaliber>();
         public System.Windows.Media.DrawingImage QRcodeImage()
         {
             if (myComboBox.SelectedValue != null)
@@ -74,22 +66,18 @@ namespace Budweg
                 BrakeCaliber value = (BrakeCaliber)myComboBox.SelectedValue;
                 int Breakid = value.BrakeCaliberId;
 
-                for (int i = 0; i < brakeCaliberList.Count; i++)
+                for (int i = 0; i < bcvm.brakeCaliberList.Count; i++)
                 {
-                    if (brakeCaliberList[i].BrakeCaliberId == Breakid)
+                    if (bcvm.brakeCaliberList[i].BrakeCaliberId == Breakid)
                     {
-                        int id = brakeCaliberList[i].BrakeCaliberId;
+                        int id = bcvm.brakeCaliberList[i].BrakeCaliberId;
                         return bcvm.QRCodeFromBytes(id);
-
-
                     }
                 }
-
             }
             return null;
 
         }
-
 
         private void myComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

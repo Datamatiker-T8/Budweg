@@ -20,37 +20,37 @@ namespace Budweg.ViewModels
         BrakecaliberRepository brakeRepo = new BrakecaliberRepository();
 
         // This code:
-        
-        //public List<BrakeCaliber> brakeCaliberList = new List<BrakeCaliber>();
 
-        //public event PropertyChangedEventHandler PropertyChanged;
+        public List<BrakeCaliber> brakeCaliberList = new List<BrakeCaliber>();
 
-        //private void NotifyPropertyChanged([CallerMemberName] string name = "")
-        //{
-        //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-        //}
+        public event PropertyChangedEventHandler PropertyChanged;
 
-        //private string name;
-        //public string Name
-        //{
-        //    get { return name; }
-        //    set { name = value; NotifyPropertyChanged("Name"); }
-        //}
+        private void NotifyPropertyChanged([CallerMemberName] string name = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
 
-        //private BrakeCaliber selectedBrake;
-        //public BrakeCaliber SelectedBrake
-        //{
-        //    get { return selectedBrake; }
-        //    set { selectedBrake = value; NotifyPropertyChanged("SelectedBrake"); Name = SelectedBrake.CaliberName; }
-        //}
+        private string name;
+        public string Name
+        {
+            get { return name; }
+            set { name = value; NotifyPropertyChanged("Name"); }
+        }
+
+        private BrakeCaliber selectedBrake;
+        public BrakeCaliber SelectedBrake
+        {
+            get { return selectedBrake; }
+            set { selectedBrake = value; NotifyPropertyChanged("SelectedBrake"); Name = SelectedBrake.CaliberName; }
+        }
 
         // Can be:
-        public ObservableCollection<BrakeCaliber> brakeCaliberList = new ObservableCollection<BrakeCaliber>();
-        
+        //public ObservableCollection<BrakeCaliber> brakeCaliberList = new ObservableCollection<BrakeCaliber>();
 
-    // ======================================================
-    // Constructor
-    // ======================================================
+
+        // ======================================================
+        // Constructor
+        // ======================================================
 
         public BrakeCaliberViewModel()
         {
@@ -96,7 +96,7 @@ namespace Budweg.ViewModels
             return brakeCaliberResult;
         }
 
-        public ObservableCollection<BrakeCaliber> GetAll()
+        public List<BrakeCaliber> GetAll()
         {
             return brakeCaliberList;
         }
