@@ -12,7 +12,7 @@
             <ColumnDefinition Width="321*"/>
         </Grid.ColumnDefinitions>
 
-        <Frame x:Name="MainFrameWindow" NavigationUIVisibility="Hidden" Margin="0,0,-1,0" Grid.ColumnSpan="2"/>
+        <Frame x:Name="MainFrameWindow" NavigationUIVisibility="Hidden"/>
 
         <Grid Grid.ColumnSpan="2" Visibility="Visible">
             <Border Margin="252,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="338" Height="77" Visibility="Visible">

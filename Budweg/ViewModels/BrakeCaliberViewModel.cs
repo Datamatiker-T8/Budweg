@@ -53,6 +53,7 @@ namespace Budweg.ViewModels
         // ======================================================
 
         public BrakeCaliberViewModel()
+            
         {
             foreach (BrakeCaliber brake in brakeRepo.GetAll())
             {
@@ -61,17 +62,17 @@ namespace Budweg.ViewModels
 
             //selectedBrake = brakeCaliberList[0];
         }
-
+        
         // ======================================================
         // CRUD: Create
         // ======================================================
 
-        public void AddBrakeCaliber(int brakeCaliberId, string caliberName, string budwegNo, bool stockStatus, string brakeSystem, string linkQRCode, byte[] qR_Bytes)
-        {
-            BrakeCaliber brakeCaliber = new(brakeCaliberId, caliberName, budwegNo, stockStatus, brakeSystem, linkQRCode, qR_Bytes);
-            int addedCaliber = brakeRepo.Add(brakeCaliber);
-            brakeCaliberVM.Add(brakeRepo.GetById(addedCaliber));
-        }
+            public void AddBrakeCaliber(int brakeCaliberId, string caliberName, string budwegNo, bool stockStatus, string brakeSystem, string linkQRCode, byte[] qR_Bytes)
+            {
+                BrakeCaliber brakeCaliber = new(brakeCaliberId, caliberName, budwegNo, stockStatus, brakeSystem, linkQRCode, qR_Bytes);
+                int addedCaliber = brakeRepo.Add(brakeCaliber);
+                brakeCaliberVM.Add(brakeRepo.GetById(addedCaliber));
+            }
         public void AddBrakeCaliber(string caliberName, string budwegNo, bool stockStatus, string brakeSystem, string linkQRCode, byte[] qR_Bytes)
         {
             BrakeCaliber brakeCaliber = new(caliberName, budwegNo, stockStatus, brakeSystem, linkQRCode, qR_Bytes);
